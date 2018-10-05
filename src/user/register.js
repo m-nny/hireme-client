@@ -1,31 +1,59 @@
 import React from 'react'
-import {Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react'
+import {Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react'
 import "./user.css"
+import {connect} from "react-redux";
+import {registerUser} from "../ducks/auth";
 
 class RegisterForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.state = {fullname: "", password: "", email: "", username: ""};
+	}
+
+	handleSubmit(e) {
+		e.preventDefault();
+		// console.log(this.state);
+		let {fullname, password, email, username} = this.state;
+		let form = {fullname, password, email, username};
+		console.log(form);
+		this.props.registerUser(form).then(()=>this.props.history.push("/"));
+	}
+
+	handleChange(e, {name, value}) {
+		// console.log("form[" + name + "]=" + value);
+		this.setState({[name]: value});
+	}
+
 	render() {
+		let {loadingUser} = this.props;
 		return (
 			<div className='register-form'>
-				{/*
-      Heads up! The styles below are necessary for the correct render of this example.
-      You can do same with CSS, the main idea is that all the elements up to the `Grid`
-      below must have a height of 100%.
-    */}
 				<Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
 					<Grid.Column style={{maxWidth: 450}}>
 						<Header as='h2' color='teal' textAlign='center'>
 							<Image src='/logo-placeholder.png'/> Create new account
 						</Header>
-						<Form size='large'>
+						<Form size='large' onSubmit={this.handleSubmit} loading={loadingUser}>
 							<Segment stacked>
-								<Form.Input fluid icon='user' iconPosition='left' placeholder='Full name'/>
-								<Form.Input fluid icon='user' iconPosition='left' placeholder='Username'/>
-								<Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address'/>
-								<Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password'/>
+								<Form.Input fluid icon='address card' iconPosition='left'
+								            name="fullname" placeholder='Full name'
+								            onChange={this.handleChange}/>
+								<Form.Input fluid icon='user' iconPosition='left'
+								            name="username" placeholder='Username'
+								            onChange={this.handleChange}/>
+								<Form.Input fluid icon='mail' iconPosition='left'
+								            name="email" placeholder='E-mail address'
+								            onChange={this.handleChange}/>
+								<Form.Input fluid icon='lock' iconPosition='left'
+								            name="password" placeholder='Password'
+								            type='password'
+								            onChange={this.handleChange}/>
 
-								<Button color='teal' fluid size='large'>
+								<Form.Button color='teal' fluid size='large'>
 									Register
-								</Button>
+								</Form.Button>
 							</Segment>
 						</Form>
 						<Message>
@@ -38,4 +66,14 @@ class RegisterForm extends React.Component {
 	}
 }
 
-export default RegisterForm
+const mapStateToProps = ({auth: {loadingUser, user}}) => {
+	return {
+		loadingUser, user
+	};
+};
+
+const mapDispatchToProps = {
+	registerUser
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
