@@ -1,15 +1,15 @@
 import React from 'react'
 import {Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react'
-import "./user.css"
-import {connect} from "react-redux";
-import {registerUser} from "../ducks/auth";
+import './user.css'
+import {connect} from 'react-redux';
+import {registerUser} from '../ducks/auth';
 
 class RegisterForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.state = {fullname: "", password: "", email: "", username: ""};
+		this.state = {fullname: '', password: '', email: '', username: ''};
 	}
 
 	handleSubmit(e) {
@@ -18,11 +18,11 @@ class RegisterForm extends React.Component {
 		let {fullname, password, email, username} = this.state;
 		let form = {fullname, password, email, username};
 		console.log(form);
-		this.props.registerUser(form).then(()=>this.props.history.push("/"));
+		this.props.registerUser(form).then(()=>this.props.history.push('/'));
 	}
 
 	handleChange(e, {name, value}) {
-		// console.log("form[" + name + "]=" + value);
+		// console.log('form[' + name + ']=' + value);
 		this.setState({[name]: value});
 	}
 
@@ -38,16 +38,16 @@ class RegisterForm extends React.Component {
 						<Form size='large' onSubmit={this.handleSubmit} loading={loadingUser}>
 							<Segment stacked>
 								<Form.Input fluid icon='address card' iconPosition='left'
-								            name="fullname" placeholder='Full name'
+								            name='fullname' placeholder='Full name'
 								            onChange={this.handleChange}/>
 								<Form.Input fluid icon='user' iconPosition='left'
-								            name="username" placeholder='Username'
+								            name='username' placeholder='Username'
 								            onChange={this.handleChange}/>
 								<Form.Input fluid icon='mail' iconPosition='left'
-								            name="email" placeholder='E-mail address'
+								            name='email' placeholder='E-mail address'
 								            onChange={this.handleChange}/>
 								<Form.Input fluid icon='lock' iconPosition='left'
-								            name="password" placeholder='Password'
+								            name='password' placeholder='Password'
 								            type='password'
 								            onChange={this.handleChange}/>
 

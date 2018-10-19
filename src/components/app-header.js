@@ -1,21 +1,21 @@
 import React, {Component} from 'react'
 import {Menu} from 'semantic-ui-react'
-import {withRouter} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 
 import './app-header.css';
-import {connect} from "react-redux";
-import {logoutUser} from "../ducks/auth";
+import {connect} from 'react-redux';
+import {logoutUser} from '../ducks/auth';
 
 class AppHeader extends Component {
 	state = {activeItem: 'home'};
 
 	handleItemClick = (e, {name}) => {
-		if (name === "logout") {
+		if (name === 'logout') {
 			this.props.logoutUser();
 			return;
 		}
 		this.setState({activeItem: name});
-		this.props.history.push('/' + (name === 'home' ? "" : name));
+		this.props.history.push('/' + (name === 'home' ? '' : name));
 	};
 
 	render() {

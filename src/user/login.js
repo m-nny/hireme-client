@@ -1,15 +1,15 @@
 import React from 'react'
 import {Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react'
-import "./user.css"
-import {connect} from "react-redux";
-import {authUser, getUser} from "../ducks/auth";
+import './user.css'
+import {connect} from 'react-redux';
+import {authUser, getUser} from '../ducks/auth';
 
 class LoginForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.state = {password: "", username: ""};
+		this.state = {password: '', username: ''};
 	}
 
 	handleSubmit(e) {
@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
 	}
 
 	handleChange(e, {name, value}) {
-		// console.log("form[" + name + "]=" + value);
+		// console.log('form[' + name + ']=' + value);
 		this.setState({[name]: value});
 	}
 	render() {
@@ -43,8 +43,8 @@ class LoginForm extends React.Component {
 						</Header>
 						<Form size='large' loading={userInfoLoading} onSubmit={this.handleSubmit}>
 							<Segment stacked>
-								<Form.Input fluid icon='user' iconPosition='left' placeholder='Username' name="username" onChange={this.handleChange}/>
-								<Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' name="password" onChange={this.handleChange}/>
+								<Form.Input fluid icon='user' iconPosition='left' placeholder='Username' name='username' onChange={this.handleChange}/>
+								<Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' name='password' onChange={this.handleChange}/>
 
 								<Button color='teal' fluid size='large'>
 									Login
