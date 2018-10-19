@@ -1,8 +1,9 @@
 import React from 'react'
 import {Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react'
-import './user.css'
 import {connect} from 'react-redux';
-import {authUser, getUser} from '../ducks/auth';
+
+import './user.css'
+import {signInUser} from '../ducks/auth';
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -14,26 +15,19 @@ class LoginForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		// console.log(this.state);
 		let {password, username} = this.state;
 		let form = {password, username};
 		console.log(form);
-		this.props.getUser(username).then(() => {
-			console.log(this.props.userInfo);
-			let {userInfo} = this.props;
-			if (userInfo != null && password === userInfo.password) {
-				this.props.authUser(userInfo)
-					// .then(()=>this.props.history.push('/'));
-			}
-		});
+		this.props.signInUser(form)
+			.then(() => this.props.history.push('/'));
 	}
 
 	handleChange(e, {name, value}) {
-		// console.log('form[' + name + ']=' + value);
 		this.setState({[name]: value});
 	}
+
 	render() {
-		let {userInfoLoading} = this.props;
+		let {loading} = this.props;
 		return (
 			<div className='login-form'>
 				<Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
@@ -41,10 +35,12 @@ class LoginForm extends React.Component {
 						<Header as='h2' color='teal' textAlign='center'>
 							<Image src='/logo-placeholder.png'/> Log-in to your account
 						</Header>
-						<Form size='large' loading={userInfoLoading} onSubmit={this.handleSubmit}>
+						<Form size='large' loading={loading} onSubmit={this.handleSubmit}>
 							<Segment stacked>
-								<Form.Input fluid icon='user' iconPosition='left' placeholder='Username' name='username' onChange={this.handleChange}/>
-								<Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' name='password' onChange={this.handleChange}/>
+								<Form.Input fluid icon='user' iconPosition='left' placeholder='Username' name='username'
+								            onChange={this.handleChange}/>
+								<Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' name='password'
+								            onChange={this.handleChange}/>
 
 								<Button color='teal' fluid size='large'>
 									Login
@@ -61,14 +57,14 @@ class LoginForm extends React.Component {
 	}
 }
 
-const mapStateToProps = ({auth: {loadingUserInfo, userInfo}}) => {
+const mapStateToProps = ({auth: {loading}}) => {
 	return {
-		loadingUserInfo, userInfo
+		loading
 	};
 };
 
 const mapDispatchToProps = {
-	getUser, authUser
+	signInUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

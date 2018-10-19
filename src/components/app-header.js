@@ -4,14 +4,14 @@ import {withRouter} from 'react-router-dom';
 
 import './app-header.css';
 import {connect} from 'react-redux';
-import {logoutUser} from '../ducks/auth';
+import {signOutUser} from '../ducks/auth';
 
 class AppHeader extends Component {
 	state = {activeItem: 'home'};
 
 	handleItemClick = (e, {name}) => {
 		if (name === 'logout') {
-			this.props.logoutUser();
+			this.props.signOutUser();
 			return;
 		}
 		this.setState({activeItem: name});
@@ -20,10 +20,10 @@ class AppHeader extends Component {
 
 	render() {
 		const {activeItem} = this.state;
-		let {user} = this.props;
+		let {authenticated} = this.props;
 		let rightMenu;
 
-		if (user == null) {
+		if (!authenticated) {
 			rightMenu = (
 				<Menu.Menu position='right'>
 					<Menu.Item name='login' active={activeItem === 'login'} onClick={this.handleItemClick}/>
@@ -33,7 +33,7 @@ class AppHeader extends Component {
 		} else {
 			rightMenu = (
 				<Menu.Menu position='right'>
-					<Menu.Item name={user.fullname}/>
+					<Menu.Item name={"AUTHORIZED"}/>
 					<Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}/>
 				</Menu.Menu>
 			);
@@ -48,13 +48,13 @@ class AppHeader extends Component {
 	}
 }
 
-const mapStateToProps = ({auth: {user}}) => {
+const mapStateToProps = ({auth: {authenticated}}) => {
 	return {
-		user
+		authenticated
 	};
 };
 
 const mapDispatchToProps = {
-	logoutUser
+	signOutUser
 };
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppHeader));
