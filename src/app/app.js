@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import './app.css';
 import LoginForm from '../user/login';
 import {Route, Switch} from 'react-router-dom';
-import WelcomeMessage from '../components/welcome-message';
-import AppHeader from '../components/app-header';
+import Home from '../components/home';
+import AppHeader from '../components/common/app-header';
+import About from '../components/about';
 import RegisterForm from '../user/register';
+import './app.css';
 
 class App extends Component {
 	render() {
@@ -12,9 +13,10 @@ class App extends Component {
 			<div className='App'>
 				<AppHeader/>
 				<Switch>
-					<Route exact path='/' render={(props) => <WelcomeMessage {...props}/>}/>
+					<Route exact path='/' render={(props) => <Home {...props}/>}/>
 					<Route path='/login' render={(props) => <LoginForm {...props} />}/>
 					<Route path='/register' render={(props) => <RegisterForm {...props} />}/>
+					<Route path='/about' render={(props) => <About {...props} />}/>
 
 				</Switch>
 			</div>

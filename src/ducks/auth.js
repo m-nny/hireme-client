@@ -6,7 +6,7 @@ export const SIGN_IN_USER = 'hireme-client/auth/SIGN_IN_USER';
 export const SIGN_IN_USER_SUCCESS = 'hireme-client/auth/SIGN_IN_USER_SUCCESS';
 export const SIGN_IN_USER_FAIL = 'hireme-client/auth/SIGN_IN_USER_FAIL';
 
-export const SIGN_OUT_USER = 'hireme-client/auth/SIGN_OUT_USER';
+export const UNAUTHORIZED = 'hireme-client/auth/UNAUTHORIZED';
 export const AUTHENTICATED = 'hireme-client/auth/AUTHENTICATED';
 
 const initState = {loading: false, authenticated: false};
@@ -29,7 +29,7 @@ export default function reducer(state = initState, action) {
 
 		case AUTHENTICATED:
 			return {...state, authenticated: true};
-		case SIGN_OUT_USER:
+		case UNAUTHORIZED:
 			return {...state, authenticated: false};
 
 		default:
@@ -57,7 +57,7 @@ export function signInUser({username, email, password}) {
 export function signOutUser() {
 	localStorage.clear();
 	return {
-		type: SIGN_OUT_USER
+		type: UNAUTHORIZED
 	}
 }
 

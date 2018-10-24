@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 
 import './app-header.css';
 import {connect} from 'react-redux';
-import {signOutUser} from '../ducks/auth';
+import {signOutUser} from '../../ducks/auth';
 
 class AppHeader extends Component {
 	state = {activeItem: 'home'};
