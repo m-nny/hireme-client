@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import LoginForm from '../user/login';
+import LoginForm from '../components/user/login';
 import {Route, Switch} from 'react-router-dom';
 import Home from '../components/home';
 import AppHeader from '../components/common/app-header';
 import About from '../components/about';
-import RegisterForm from '../user/register';
+import RegisterForm from '../components/user/register';
 import './app.css';
 
 class App extends Component {

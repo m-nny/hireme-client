@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './app/app';
-import * as serviceWorker from './serviceWorker';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
+import App from './app/app';
+import * as serviceWorker from './serviceWorker';
+import history from './history';
+import './index.css';
+import {authenticated} from './ducks/auth';
 
 const store = configureStore();
-console.log(process.env);
+
+const user = localStorage.getItem("user");
+if (user)
+	store.dispatch(authenticated(user));
 
 ReactDOM.render((
 		<Provider store={store}>
-			<Router>
+			<Router history={history}>
 				<App/>
 			</Router>
 		</Provider>

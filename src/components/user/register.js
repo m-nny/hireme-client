@@ -1,8 +1,9 @@
 import React from 'react'
 import {Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react'
-import './user.css'
 import {connect} from 'react-redux';
-import {signInUser, signUpUser} from '../ducks/auth';
+
+import {signInUser, signUpUser} from '../../ducks/auth';
+import {getUserInfo} from '../../ducks/user';
 
 class RegisterForm extends React.Component {
 	constructor(props) {
@@ -14,13 +15,10 @@ class RegisterForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		// console.log(this.state);
 		let {fullname, password, email, username} = this.state;
 		let form = {fullname, password, email, username};
-		console.log(form);
 		this.props.signUpUser(form)
-			.then(this.props.signInUser(form))
-			.then(()=>this.props.history.push('/'));
+			.then(() => this.props.signInUser(form))
 	}
 
 	handleChange(e, {name, value}) {
@@ -76,7 +74,8 @@ const mapStateToProps = ({auth: {loadingUser}}) => {
 
 const mapDispatchToProps = {
 	signUpUser,
-	signInUser
+	signInUser,
+	getUserInfo
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);

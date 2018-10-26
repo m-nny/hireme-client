@@ -1,37 +1,33 @@
-export const SIGN_UP_USER = 'hireme-client/auth/SIGN_UP';
+import axios from 'axios';
+import {BACKEND_BASE_URL as URL} from '../constants/api';
+import history from '../history';
+import {getUserInfo} from './user';
+
 export const SIGN_UP_USER_SUCCESS = 'hireme-client/auth/SIGN_UP_SUCCESS';
 export const SIGN_UP_USER_FAIL = 'hireme-client/auth/SIGN_UP_FAIL';
 
-export const SIGN_IN_USER = 'hireme-client/auth/SIGN_IN_USER';
+
 export const SIGN_IN_USER_SUCCESS = 'hireme-client/auth/SIGN_IN_USER_SUCCESS';
 export const SIGN_IN_USER_FAIL = 'hireme-client/auth/SIGN_IN_USER_FAIL';
 
-export const UNAUTHORIZED = 'hireme-client/auth/UNAUTHORIZED';
-export const AUTHENTICATED = 'hireme-client/auth/AUTHENTICATED';
+export const LOADING = 'hireme-client/auth/LOADING';
 
-const initState = {loading: false, authenticated: false};
+const initState = {loading: false, authenticated: false, error: ''};
 
 export default function reducer(state = initState, action) {
 	switch (action.type) {
-		case SIGN_IN_USER:
-			return {...state, authenticated: false, loading: true};
 		case SIGN_IN_USER_SUCCESS:
 			return {...state, authenticated: true, loading: false};
 		case SIGN_IN_USER_FAIL:
-			return {...state, error: action.error, loading: false};
+			return {...state, authenticated: false, error: action.payload, loading: false};
 
-		case SIGN_UP_USER:
-			return {...state, loading: true};
 		case SIGN_UP_USER_SUCCESS:
 			return {...state, loading: false};
 		case SIGN_UP_USER_FAIL:
 			return {...state, loading: false, error: action.payload};
 
-		case AUTHENTICATED:
-			return {...state, authenticated: true};
-		case UNAUTHORIZED:
-			return {...state, authenticated: false};
-
+		case LOADING:
+			return {...state, loading: true, error: ''};
 		default:
 			return state;
 	}
@@ -39,48 +35,55 @@ export default function reducer(state = initState, action) {
 
 export function signInUser({username, email, password}) {
 	let usernameOrEmail = username ? username : email;
-	return {
-		type: SIGN_IN_USER,
-		payload: {
-			request: {
-				url: '/api/auth/signin',
-				method: 'POST',
-				data: {
-					usernameOrEmail,
-					password
-				}
-			}
-		}
+	return (dispatch) => {
+		dispatch({type: LOADING});
+		return axios.post(`${URL}/api/auth/signin`, {usernameOrEmail, password})
+			.then(res => {
+				dispatch(authenticated(res.data.accessToken));
+				return Promise.resolve();
+			}).catch(error => {
+				let {message} = error.response.data;
+				console.log('Error:', message);
+				dispatch({type: SIGN_IN_USER_FAIL, payload: message});
+				return Promise.reject(error.response);
+			});
 	};
 }
 
-export function signOutUser() {
+export function unauthenticated() {
 	localStorage.clear();
+	axios.defaults.headers.common['Authorization'] = '';
+	history.push('/');
 	return {
-		type: UNAUTHORIZED
+		type: SIGN_IN_USER_FAIL,
+		payload: ''
 	}
 }
 
-export function authenticated() {
-	return {
-		type: AUTHENTICATED
-	}
+export function authenticated(token) {
+	localStorage.setItem('user', token);
+	axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+	history.push('/');
+	return (dispatch) => dispatch(getUserInfo()).then(payload => {
+		dispatch({type: SIGN_IN_USER_SUCCESS, payload});
+	});
 }
 
 export function signUpUser({fullname, username, email, password}) {
-	return {
-		type: SIGN_UP_USER,
-		payload: {
-			request: {
-				url: '/api/auth/signup',
-				method: 'POST',
-				data: {
-					fullname,
-					username,
-					email,
-					password
+	return async (dispatch) => {
+		dispatch({type: LOADING});
+		return axios.post(`${URL}/api/auth/signup`, {fullname, username, email, password})
+			.then(res => {
+				if (res.data.success) {
+					dispatch({type: SIGN_UP_USER_SUCCESS});
+					return Promise.resolve();
+				} else {
+					dispatch({type: SIGN_UP_USER_FAIL, payload: res.data.message});
+					return Promise.reject();
 				}
-			}
-		}
+			}).catch(error => {
+				dispatch({type: SIGN_UP_USER_FAIL, payload: error});
+				return Promise.reject();
+			});
 	};
 }

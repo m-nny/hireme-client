@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 
 import './app-header.css';
 import {connect} from 'react-redux';
-import {signOutUser} from '../../ducks/auth';
+import {unauthenticated} from '../../ducks/auth';
 
 class AppHeader extends Component {
 	state = {activeItem: 'home'};
@@ -20,7 +20,7 @@ class AppHeader extends Component {
 
 	render() {
 		const {activeItem} = this.state;
-		let {authenticated} = this.props;
+		let {authenticated, username} = this.props;
 		let rightMenu;
 
 		if (!authenticated) {
@@ -33,7 +33,7 @@ class AppHeader extends Component {
 		} else {
 			rightMenu = (
 				<Menu.Menu position='right'>
-					<Menu.Item name={"AUTHORIZED"}/>
+					<Menu.Item name={username}/>
 					<Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}/>
 				</Menu.Menu>
 			);
@@ -48,13 +48,14 @@ class AppHeader extends Component {
 	}
 }
 
-const mapStateToProps = ({auth: {authenticated}}) => {
+const mapStateToProps = ({auth: {authenticated}, user: {username}}) => {
 	return {
-		authenticated
+		authenticated,
+		username
 	};
 };
 
 const mapDispatchToProps = {
-	signOutUser
+	signOutUser: unauthenticated
 };
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppHeader));
