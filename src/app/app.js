@@ -5,6 +5,7 @@ import Home from '../components/home';
 import AppHeader from '../components/common/app-header';
 import About from '../components/about';
 import RegisterForm from '../components/user/register';
+import Profile from '../components/user/profile';
 import './app.css';
 
 class App extends Component {
@@ -13,10 +14,11 @@ class App extends Component {
 			<div className='App'>
 				<AppHeader/>
 				<Switch>
-					<Route exact path='/' render={(props) => <Home {...props}/>}/>
-					<Route path='/login' render={(props) => <LoginForm {...props} />}/>
-					<Route path='/register' render={(props) => <RegisterForm {...props} />}/>
-					<Route path='/about' render={(props) => <About {...props} />}/>
+					<Route exact path='/' component={Home}/>
+					<Route path='/login' component={LoginForm}/>
+					<Route path='/register' component={RegisterForm}/>
+					<Route path='/about' component={About}/>
+					<Route path='/profile' component={Profile}/>
 
 				</Switch>
 			</div>
