@@ -5,7 +5,7 @@ import Home from '../components/home';
 import AppHeader from '../components/common/app-header';
 import About from '../components/about';
 import RegisterForm from '../components/user/register';
-import Profile from '../components/user/profile';
+import Profile from '../components/user/editProfile';
 import './app.css';
 
 class App extends Component {

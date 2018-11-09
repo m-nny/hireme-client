@@ -3,7 +3,6 @@ import {Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-r
 import {connect} from 'react-redux';
 
 import {signInUser} from '../../ducks/auth';
-import {getUserInfo} from '../../ducks/user';
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -66,8 +65,7 @@ const mapStateToProps = ({auth: {loading, error}}) => {
 };
 
 const mapDispatchToProps = {
-	signInUser,
-	getUserInfo
+	signInUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

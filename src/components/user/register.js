@@ -2,8 +2,7 @@ import React from 'react'
 import {Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 
-import {signInUser, signUpUser} from '../../ducks/auth';
-import {getUserInfo} from '../../ducks/user';
+import {signUpUser} from '../../ducks/auth';
 
 class RegisterForm extends React.Component {
 	constructor(props) {
@@ -73,9 +72,7 @@ const mapStateToProps = ({auth: {loadingUser}}) => {
 };
 
 const mapDispatchToProps = {
-	signUpUser,
-	signInUser,
-	getUserInfo
+	signUpUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
