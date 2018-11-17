@@ -63,7 +63,7 @@ export function unauthenticated() {
 export function authenticated(token) {
 	localStorage.setItem('user', token);
 	axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-	history.push('/');
+	history.push('/feed');
 	return (dispatch) => dispatch(getUserInfo()).then(payload => {
 		dispatch({type: SIGN_IN_USER_SUCCESS, payload});
 	});

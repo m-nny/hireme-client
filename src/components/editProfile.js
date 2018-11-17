@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Dropdown, Form, Header, Message} from 'semantic-ui-react';
-import {getUserProfile, setUserProfile} from "../../ducks/user";
+import {getUserProfile, setUserProfile} from "../ducks/user";
 import {
 	jobFields,
 	jobOptions,
@@ -10,7 +10,7 @@ import {
 	roleOptions,
 	skillOptions,
 	universityOptions
-} from "../../utils/userInfo";
+} from "../utils/userInfo";
 
 class EditProfile extends React.Component {
 	handleChange = (e, {name, value}) => this.setState({[name]: value});

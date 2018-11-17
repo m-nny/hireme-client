@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
-import LoginForm from '../components/user/login';
 import {Route, Switch} from 'react-router-dom';
-import Home from '../components/home';
-import AppHeader from '../components/common/app-header';
+
+import LoginForm from '../components/login';
+import Feed from '../components/feed';
+import Welcome from '../components/welcome';
 import About from '../components/about';
-import RegisterForm from '../components/user/register';
-import Profile from '../components/user/editProfile';
+import RegisterForm from '../components/register';
+import Profile from '../components/editProfile';
 import './app.css';
 
 class App extends Component {
 	render() {
 		return (
 			<div className='App'>
-				<AppHeader/>
 				<Switch>
-					<Route exact path='/' component={Home}/>
+					<Route exact path='/' component={Welcome}/>
+					<Route path='/feed' component={Feed}/>
 					<Route path='/login' component={LoginForm}/>
 					<Route path='/register' component={RegisterForm}/>
 					<Route path='/about' component={About}/>

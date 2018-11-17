@@ -1,16 +1,59 @@
+@font-face {
+    font-family: "Input Mono";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Input Mono"), url(./fonts/InputMono/InputMono-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Input Mono";
+    font-style: normal;
+    font-weight: bold;
+    src: local("Input Mono"), url(./fonts/InputMono/InputMono-Bold.ttf) format("truetype");
+}
+
 body {
-    margin: 0;
-    padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #C1DFF0;
+    background-color: #FFFFFF;
     text-align: center;
+    font-family: "Input Mono", monospace;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* HireMe.kz */
+.title {
+    left: 93px;
+    padding-top: 120px;
+
+    /*font-family: Input Mono, monospace;*/
+    font-size: 48px;
+    font-weight: bold;
+    /*line-height: 58px;*/
+
+    color: #0941BA;
+}
+
+.description {
+    margin: 80px auto;
+    line-height: normal;
+    font-size: 36px;
+
+    color: #CC3363;
+}
+
+button {
+    width: 252px;
+    height: 66px;
+
+    background: #0941BA;
+    font-size: 36px;
+    color: #FFFFFF;
 }

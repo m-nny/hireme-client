@@ -1,15 +1,14 @@
 import React from 'react';
-import {Message} from 'semantic-ui-react';
 
 class About extends React.Component {
 	render() {
 		return (
-			<Message>
-				<Message.Header>About</Message.Header>
+			<div>
+				<h1>About</h1>
 				<p>
 					Some stuff about this project
 				</p>
-			</Message>
+			</div>
 		);
 	}
 }
