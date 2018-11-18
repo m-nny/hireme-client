@@ -7,7 +7,6 @@ import Welcome from '../components/welcome';
 import About from '../components/about';
 import RegisterForm from '../components/register';
 import Profile from '../components/editProfile';
-import './app.css';
 
 class App extends Component {
 	render() {

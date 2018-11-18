@@ -6,7 +6,7 @@ import configureStore from './store/configureStore';
 import App from './app/app';
 import * as serviceWorker from './serviceWorker';
 import history from './history';
-import './index.css';
+import './styles/index.sass';
 import {authenticated} from './ducks/auth';
 
 const store = configureStore();

@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-import './welcome.css';
+import '../styles/welcome.sass';
 
 const description = '/*The place where enthusiastic students meet innovative IT projects and help to solve real-life problems*/';
 
