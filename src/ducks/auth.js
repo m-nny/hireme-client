@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {BACKEND_BASE_URL as URL} from '../constants/api';
-import history from '../history';
+import {BACKEND_BASE_URL as URL} from '../utils/constants';
+import history from '../utils/history';
 import {getUserInfo} from './user';
 
 export const SIGN_UP_USER_SUCCESS = 'hireme-client/auth/SIGN_UP_SUCCESS';

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {BACKEND_BASE_URL as URL} from '../constants/api';
+import {BACKEND_BASE_URL as URL} from '../utils/constants';
 
 export const GET_USER_SUCCESS = 'hireme-client/user/GET_USER_SUCCESS';
 

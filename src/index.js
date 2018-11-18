@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import configureStore from './store/configureStore';
-import App from './app/app';
-import * as serviceWorker from './serviceWorker';
-import history from './history';
+import configureStore from './utils/configureStore';
+import App from './components/app';
+import * as serviceWorker from './utils/serviceWorker';
+import history from './utils/history';
 import './styles/index.sass';
 import {authenticated} from './ducks/auth';
 
