@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux';
 
-import {signUpUser} from '../ducks/auth';
+import {signInUser, signUpUser} from '../ducks/auth';
 
 class RegisterForm extends React.Component {
 	constructor(props) {
@@ -19,31 +19,38 @@ class RegisterForm extends React.Component {
 			.then(() => this.props.signInUser(form))
 	}
 
-	handleChange(e, {name, value}) {
+	handleChange({target}) {
+		let {name, type} = target;
+		let value = type === 'checkbox' ? target.checked : target.value;
 		this.setState({[name]: value});
 	}
 
 	render() {
 		return (
-			<div className='register-form'>
-				<form onSubmit={this.handleSubmit}>
-					<input
-						name='fullname' placeholder='Full name'
-						onChange={this.handleChange}/>
-					<input
-						name='username' placeholder='Username'
-						onChange={this.handleChange}/>
-					<input
-						name='email' placeholder='E-mail address'
-						onChange={this.handleChange}/>
-					<input
-						name='password' placeholder='Password'
-						type='password'
-						onChange={this.handleChange}/>
+			<form onSubmit={this.handleSubmit} className="form">
+				<label className="description"> Let the force be with you! </label>
+				<input type='text'
+				       name='fullname' placeholder='Name'
+				       onChange={this.handleChange}/>
+				<input type='text'
+				       name='username' placeholder='Username'
+				       onChange={this.handleChange}/>
+				<input type='text'
+				       name='email' placeholder='E-mail'
+				       onChange={this.handleChange}/>
+				<input type='password'
+				       name='password' placeholder='Password'
+				       onChange={this.handleChange}/>
+				<div className="form-checkbox">
+					<input type='checkbox'
+					       name='agreement'
+					       id='agreement'
+					       onChange={this.handleChange}/>
+					<label htmlFor="agreement"> I agree with the terms and conditions </label>
+				</div>
 
-					<button> Register </button>
-				</form>
-			</div>
+				<button>Sign up</button>
+			</form>
 		)
 	}
 }
@@ -55,7 +62,8 @@ const mapStateToProps = ({auth: {loadingUser}}) => {
 };
 
 const mapDispatchToProps = {
-	signUpUser
+	signUpUser,
+	signInUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);

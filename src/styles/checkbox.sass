@@ -1,0 +1,38 @@
+$checkbox-width: 30px
+
+.regular-checkbox
+  -webkit-appearance: none
+  background-color: #E5E5E5
+  padding: 9px
+  border-radius: 3px
+  display: inline-block
+  position: relative
+  height: $checkbox-width
+  width: $checkbox-width
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+  vertical-align: center
+  margin: 0 12px 0 0
+
+.regular-checkbox:checked
+  background-color: #e9ecee
+  border: 1px solid #adb8c0
+  color: #99a1a7
+
+.regular-checkbox:checked:after
+  content: '\25CF'
+  font-size: 22px
+  position: absolute
+  left: 7px
+  top: 2px
+  color: #99a1a7
+
+input[type="checkbox"] + label
+  font-size: 20px
+
+.form-checkbox
+  display: flex
+  flex-direction: row
+  align-items: center
+
+input[type="checkbox"]
+  @extend .regular-checkbox

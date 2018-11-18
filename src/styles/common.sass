@@ -1,4 +1,7 @@
+@import "checkbox"
+
 /* HireMe.kz
+$checkbox-width: 18px
 
 .title
   left: 93px
@@ -23,10 +26,10 @@ button
   color: #FFFFFF
   margin: 25px 0
 
-.wide
+@mixin wide
   width: 520px
 
-.field
+@mixin field
   height: 60px
   background: #E5E5E5
   margin: 15px 0
@@ -39,10 +42,10 @@ button
   flex-direction: column
   align-items: center
   text-align: center
-  input, button
-    @extend .wide
-  input
-    @extend .field
-  label
+  input[type=text], input[type=password], button
+    @include wide
+  input[type=text], input[type=password]
+    @include field
+  label:first-child
     margin-bottom: 80px
 
