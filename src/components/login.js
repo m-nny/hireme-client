@@ -2,48 +2,40 @@ import React from 'react'
 import {connect} from 'react-redux';
 
 import {signInUser} from '../ducks/auth';
+import {Field, reduxForm} from 'redux-form';
+import {validateLogin} from '../utils/validate';
+import renderField from './common/field';
 
 class LoginForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-		this.state = {password: '', username: ''};
+		this.submit = this.submit.bind(this);
 	}
 
-	handleSubmit(e) {
-		e.preventDefault();
-		let {password, username} = this.state;
-		let form = {password, username};
-		// console.log(form);
-		this.props.signInUser(form)
+	submit(values) {
+		console.log(values);
+		return this.props.signInUser(values)
 			.catch(error => console.log(error));
 	}
 
-	handleChange({target}) {
-		let {name, value} = target;
-		this.setState({[name]: value});
-	}
-
 	render() {
+		let {handleSubmit, submitting} = this.props;
 		return (
-			<form onSubmit={this.handleSubmit} className="form">
+			<form onSubmit={handleSubmit(this.submit)} className="form">
 				<label className="description">Let the force be with you!</label>
-				<input
+				<Field
 					name="username"
 					type="text"
-					placeholder="Username or Email"
-					value={this.state.username}
-					onChange={this.handleChange}
+					component={renderField}
+					label="Username or Email"
 				/>
-				<input
+				<Field
 					name="password"
 					type="password"
-					placeholder="Password"
-					value={this.state.password}
-					onChange={this.handleChange}
+					component={renderField}
+					label="Password"
 				/>
-				<button type="submit"> Log in </button>
+				<button type="submit" disabled={submitting}>Log in</button>
 			</form>
 		)
 	}
@@ -59,4 +51,9 @@ const mapDispatchToProps = {
 	signInUser
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+LoginForm = reduxForm({
+	form: 'login',
+	validate: validateLogin
+})(LoginForm);
+export default LoginForm;

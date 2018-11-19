@@ -1,7 +1,7 @@
 @import "checkbox"
-
-/* HireMe.kz
-$checkbox-width: 18px
+$wide-width: 520px
+$color-primary: #0941BA
+$color-secondary: #CC3363
 
 .title
   left: 93px
@@ -10,13 +10,13 @@ $checkbox-width: 18px
   font-size: 48px
   font-weight: bold
   /*line-height: 58px;
-  color: #0941BA
+  color: $color-primary
 
 .description
   margin: 80px auto
   line-height: normal
   font-size: 36px
-  color: #CC3363
+  color: $color-secondary
 
 button
   width: 250px
@@ -25,17 +25,32 @@ button
   font-size: 36px
   color: #FFFFFF
   margin: 25px 0
+  &:disabled
+    background: rgba($color-primary, 0.3)
 
 @mixin wide
-  width: 520px
+  width: $wide-width
 
 @mixin field
   height: 60px
   background: #E5E5E5
-  margin: 15px 0
   color: #6E6E6E
   border: 0
+  padding: 0
   text-align: center
+
+.field-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 15px 0
+  span
+    padding: 4px 0
+    font-size: 18px
+    color: #CC3363
+    width: $wide-width
+    background: rgba(204, 51, 99, 0.1)
+
 
 .form
   display: flex

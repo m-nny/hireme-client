@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "history": "^4.7.2",
     "node-sass": "^4.10.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -12,9 +13,9 @@
     "react-scripts": "2.0.3",
     "redux": "^4.0.0",
     "redux-axios-middleware": "^4.0.0",
+    "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
-    "semantic-ui-react": "^0.83.0",
-    "history": "latest"
+    "semantic-ui-react": "^0.83.0"
   },
   "scripts": {
     "start": "react-scripts start",
