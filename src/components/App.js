@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import LoginForm from './login';
-import Feed from './feed';
-import Welcome from './welcome';
-import About from './about';
-import RegisterForm from './register';
-import Profile from './editProfile';
+import LoginForm from './LoginPage';
+import Feed from './FeedPage';
+import Welcome from './WelcomePage';
+import AboutPage from './AboutPage';
+import RegisterForm from './RegisterPage';
 
 class App extends Component {
 	render() {
@@ -17,9 +16,7 @@ class App extends Component {
 					<Route path='/feed' component={Feed}/>
 					<Route path='/login' component={LoginForm}/>
 					<Route path='/register' component={RegisterForm}/>
-					<Route path='/about' component={About}/>
-					<Route path='/profile' component={Profile}/>
-
+					<Route path='/about' component={AboutPage}/>
 				</Switch>
 			</div>
 		);

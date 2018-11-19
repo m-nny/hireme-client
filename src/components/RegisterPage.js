@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {signInUser, signUpUser} from '../ducks/auth';
 import {Field, reduxForm} from 'redux-form';
-import renderField from './common/field';
+import FieldView from './common/FieldView';
 import {validateRegister} from '../utils/validate';
 
 class RegisterForm extends React.Component {
@@ -22,11 +22,11 @@ class RegisterForm extends React.Component {
 		return (
 			<form onSubmit={handleSubmit(this.submit)} className="form">
 				<label className="description"> Let the force be with you! </label>
-				<Field type='text' component={renderField} name='fullname' label='Name'/>
-				<Field type='text' component={renderField} name='username' label='Username'/>
-				<Field type='text' component={renderField} name='email' label='E-mail'/>
-				<Field type='password' component={renderField} name='password' label='Password'/>
-				<Field type='checkbox' component={renderField} name='agreement' id='agreement'
+				<Field type='text' component={FieldView} name='fullname' label='Name'/>
+				<Field type='text' component={FieldView} name='username' label='Username'/>
+				<Field type='text' component={FieldView} name='email' label='E-mail'/>
+				<Field type='password' component={FieldView} name='password' label='Password'/>
+				<Field type='checkbox' component={FieldView} name='agreement' id='agreement'
 				       label="I agree with the terms and conditions "
 				/>
 

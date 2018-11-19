@@ -1,6 +1,6 @@
 import React from 'react';
 
-const renderField = ({
+const FieldView = ({
 	                     id,
 	                     input,
 	                     label,
@@ -19,4 +19,4 @@ const renderField = ({
 	</div>
 );
 
-export default renderField;
+export default FieldView;

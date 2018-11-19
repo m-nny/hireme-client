@@ -1,11 +1,11 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-import '../styles/welcome.sass';
+import '../styles/WelcomePage.sass';
 
 const description = '/*The place where enthusiastic students meet innovative IT projects and help to solve real-life problems*/';
 
-class Welcome extends React.Component {
+class WelcomePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onClickHandler = this.onClickHandler.bind(this)
@@ -28,4 +28,4 @@ class Welcome extends React.Component {
 	}
 }
 
-export default withRouter(Welcome);
+export default withRouter(WelcomePage);

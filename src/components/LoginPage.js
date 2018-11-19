@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {signInUser} from '../ducks/auth';
 import {Field, reduxForm} from 'redux-form';
 import {validateLogin} from '../utils/validate';
-import renderField from './common/field';
+import FieldView from './common/FieldView';
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -24,13 +24,13 @@ class LoginForm extends React.Component {
 				<Field
 					name="username"
 					type="text"
-					component={renderField}
+					component={FieldView}
 					label="Username or Email"
 				/>
 				<Field
 					name="password"
 					type="password"
-					component={renderField}
+					component={FieldView}
 					label="Password"
 				/>
 				<button type="submit" disabled={submitting}>Log in</button>

@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 
 import {unauthenticated as signOutUser} from '../ducks/auth';
 import {getFeed} from '../ducks/post';
-import PostCard from './common/postCard';
+import PostCard from './common/PostCard';
 
-class Feed extends React.Component {
+class FeedPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props.getFeed();
@@ -33,4 +33,4 @@ const mapDispatchToProps = {
 	signOutUser
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);
