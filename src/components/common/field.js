@@ -14,7 +14,7 @@ const renderField = ({
 			{type === 'checkbox' && <label htmlFor={id}>{label}</label>}
 		</div>
 		{touched &&
-		((error && <span>{'* ' + error}</span>) ||
+		((error && <div className="error">{'* ' + error}</div>) ||
 			(warning && <span>{warning}</span>))}
 	</div>
 );

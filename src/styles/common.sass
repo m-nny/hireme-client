@@ -1,7 +1,22 @@
 @import "checkbox"
-$wide-width: 520px
+$wide: 520px
+$tall: 60px
 $color-primary: #0941BA
 $color-secondary: #CC3363
+
+@mixin wide
+  width: $wide
+
+@mixin tall
+  height: $tall
+
+@mixin field
+  @include tall
+  background: #E5E5E5
+  color: #6E6E6E
+  border: 0
+  padding: 0
+  text-align: center
 
 .title
   left: 93px
@@ -20,7 +35,7 @@ $color-secondary: #CC3363
 
 button
   width: 250px
-  height: 60px
+  @include tall
   background: #0941BA
   font-size: 36px
   color: #FFFFFF
@@ -28,28 +43,22 @@ button
   &:disabled
     background: rgba($color-primary, 0.3)
 
-@mixin wide
-  width: $wide-width
-
-@mixin field
-  height: 60px
-  background: #E5E5E5
-  color: #6E6E6E
-  border: 0
-  padding: 0
-  text-align: center
-
 .field-container
   display: flex
   flex-direction: column
   align-items: center
   margin: 15px 0
-  span
-    padding: 4px 0
-    font-size: 18px
-    color: #CC3363
-    width: $wide-width
-    background: rgba(204, 51, 99, 0.1)
+
+.error
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 4px 0
+  font-size: 18px
+  color: #CC3363
+  width: $wide
+  background: rgba(204, 51, 99, 0.1)
+  height: 32px
 
 
 .form
@@ -57,10 +66,14 @@ button
   flex-direction: column
   align-items: center
   text-align: center
-  input[type=text], input[type=password], button
-    @include wide
   input[type=text], input[type=password]
+    @include wide
     @include field
   label:first-child
     margin-bottom: 80px
-
+  button
+    @include wide
+    margin-bottom: 0
+  > .error
+    height: $tall
+    font-size: 22px

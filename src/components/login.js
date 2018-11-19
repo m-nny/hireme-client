@@ -13,13 +13,11 @@ class LoginForm extends React.Component {
 	}
 
 	submit(values) {
-		console.log(values);
-		return this.props.signInUser(values)
-			.catch(error => console.log(error));
+		return this.props.signInUser(values);
 	}
 
 	render() {
-		let {handleSubmit, submitting} = this.props;
+		let {handleSubmit, submitting, error} = this.props;
 		return (
 			<form onSubmit={handleSubmit(this.submit)} className="form">
 				<label className="description">Let the force be with you!</label>
@@ -36,22 +34,17 @@ class LoginForm extends React.Component {
 					label="Password"
 				/>
 				<button type="submit" disabled={submitting}>Log in</button>
+				{error && <div className="error"> {error} </div>}
 			</form>
 		)
 	}
 }
 
-const mapStateToProps = ({auth: {loading, error}}) => {
-	return {
-		loading, error
-	};
-};
-
 const mapDispatchToProps = {
 	signInUser
 };
 
-LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+LoginForm = connect(null, mapDispatchToProps)(LoginForm);
 LoginForm = reduxForm({
 	form: 'login',
 	validate: validateLogin

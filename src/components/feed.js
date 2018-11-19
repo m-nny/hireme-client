@@ -7,7 +7,7 @@ class Feed extends React.Component {
 	render() {
 		return (
 			<div>
-				This is some fake news
+				This is some fake news <br/>
 				<button onClick={() => this.props.signOutUser()}>Sign out</button>
 			</div>
 		);

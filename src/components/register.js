@@ -13,13 +13,12 @@ class RegisterForm extends React.Component {
 	}
 
 	submit(values) {
-		console.log(values);
-		this.props.signUpUser(values)
+		return this.props.signUpUser(values)
 			.then(() => this.props.signInUser(values))
 	}
 
 	render() {
-		let {handleSubmit, submitting} = this.props;
+		let {handleSubmit, submitting, error} = this.props;
 		return (
 			<form onSubmit={handleSubmit(this.submit)} className="form">
 				<label className="description"> Let the force be with you! </label>
@@ -32,23 +31,18 @@ class RegisterForm extends React.Component {
 				/>
 
 				<button disabled={submitting}>Sign up</button>
+				{error && <div className="error"> {error} </div>}
 			</form>
 		)
 	}
 }
-
-const mapStateToProps = ({auth: {loadingUser}}) => {
-	return {
-		loadingUser
-	};
-};
 
 const mapDispatchToProps = {
 	signUpUser,
 	signInUser
 };
 
-RegisterForm = connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
+RegisterForm = connect(null, mapDispatchToProps)(RegisterForm);
 
 RegisterForm = reduxForm({
 	form: 'register',

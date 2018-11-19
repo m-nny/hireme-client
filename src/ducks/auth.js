@@ -2,6 +2,7 @@ import axios from 'axios';
 import {BACKEND_BASE_URL as URL} from '../utils/constants';
 import history from '../utils/history';
 import {getUserInfo} from './user';
+import {SubmissionError} from 'redux-form';
 
 export const SIGN_UP_USER_SUCCESS = 'hireme-client/auth/SIGN_UP_SUCCESS';
 export const SIGN_UP_USER_FAIL = 'hireme-client/auth/SIGN_UP_FAIL';
@@ -45,7 +46,9 @@ export function signInUser({username, email, password}) {
 				let {message} = error.response.data;
 				console.log('Error:', message);
 				dispatch({type: SIGN_IN_USER_FAIL, payload: message});
-				return Promise.reject(error.response);
+				throw new SubmissionError({
+					_error: "Incorrect username or password"
+				});
 			});
 	};
 }
@@ -79,11 +82,15 @@ export function signUpUser({fullname, username, email, password}) {
 					return Promise.resolve();
 				} else {
 					dispatch({type: SIGN_UP_USER_FAIL, payload: res.data.message});
-					return Promise.reject();
+					throw new SubmissionError({
+						_error: res.data.message
+					});
 				}
 			}).catch(error => {
 				dispatch({type: SIGN_UP_USER_FAIL, payload: error});
-				return Promise.reject();
+				throw new SubmissionError({
+					_error: error.response.data.message || "Some server error"
+				});
 			});
 	};
 }
