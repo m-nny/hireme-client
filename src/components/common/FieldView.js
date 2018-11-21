@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FieldView = ({
+const GrayField = ({
 	                     id,
 	                     input,
 	                     label,
@@ -19,4 +19,13 @@ const FieldView = ({
 	</div>
 );
 
-export default FieldView;
+const WhiteField = ({
+	id, input, label, type, placeholder
+}) => (
+	<div className="white-field">
+		<label htmlFor={id}>{label}</label>
+		<input {...input} placeholder={placeholder} type={type} id={id}/>
+	</div>
+);
+
+export {GrayField, WhiteField};

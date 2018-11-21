@@ -1,0 +1,30 @@
+@import "constants"
+
+.registration-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 55px 0
+  > label:first-child
+    background: $color-primary
+    color: #FFFFFF
+    text-align: center
+    vertical-align: middle
+    padding: 12px
+    @include wide
+    //@include tall
+  button
+    @include wide
+
+.block
+  border: #000000 1px solid
+  margin: 25px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 24px 54px
+  min-width: 700px
+  > label:first-child
+    margin-bottom: 30px
+    //align-self: center
+

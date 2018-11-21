@@ -1,25 +1,26 @@
 @import "constants"
 @import "checkbox"
+@import "toggle"
+@import "registration_form"
+@import "field_view"
+@import "form"
+@import "skillset"
 
-@mixin wide
-  width: $wide
-
-@mixin tall
-  height: $tall
-
-@mixin field
+button
+  width: 250px
   @include tall
-  background: #E5E5E5
-  color: #6E6E6E
-  border: 0
-  padding: 0
-  text-align: center
+  background: #0941BA
+  font-size: 27px
+  color: #FFFFFF
+  margin: 20px 0
+  &:disabled
+    background: rgba($color-primary, 0.3)
 
 .title
   left: 93px
   padding-top: 120px
   /*font-family: Input Mono, monospace;
-  font-size: 48px
+  font-size: 36px
   font-weight: bold
   /*line-height: 58px;
   color: $color-primary
@@ -30,47 +31,17 @@
   font-size: 36px
   color: $color-secondary
 
-button
-  width: 250px
-  @include tall
-  background: #0941BA
-  font-size: 36px
-  color: #FFFFFF
-  margin: 25px 0
-  &:disabled
-    background: rgba($color-primary, 0.3)
-
-.field-container
-  display: flex
-  flex-direction: column
-  align-items: center
-  margin: 15px 0
-
 .error
   display: flex
   align-items: center
   justify-content: center
   padding: 4px 0
-  font-size: 18px
+  font-size: 13px
   color: #CC3363
   width: $wide
   background: rgba(204, 51, 99, 0.1)
   height: 32px
 
-
-.form
-  display: flex
-  flex-direction: column
-  align-items: center
-  text-align: center
-  input[type=text], input[type=password]
-    @include wide
-    @include field
-  label:first-child
-    margin-bottom: 80px
-  button
-    @include wide
-    margin-bottom: 0
-  > .error
-    height: $tall
-    font-size: 22px
+.disabled
+  background: $color-disabled
+  color: #000000
