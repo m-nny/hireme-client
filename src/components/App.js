@@ -8,6 +8,7 @@ import AboutPage from './AboutPage';
 import SignUpForm from './SignUpPage';
 import Registration from './Registration';
 import StudentRegistration from './Registration/StudentRegistration';
+import CompanyRegistration from './Registration/CompanyRegistration';
 
 class App extends Component {
 	render() {
@@ -21,6 +22,7 @@ class App extends Component {
 					<Route path='/about' component={AboutPage}/>
 					<Route exact path='/registration' component={Registration}/>
 					<Route path='/registration/student' component={StudentRegistration}/>
+					<Route path='/registration/company' component={CompanyRegistration}/>
 				</Switch>
 			</div>
 		);
