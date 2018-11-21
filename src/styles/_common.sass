@@ -1,25 +1,15 @@
 @import "constants"
 @import "checkbox"
-
-@mixin wide
-  width: $wide
-
-@mixin tall
-  height: $tall
-
-@mixin field
-  @include tall
-  background: #E5E5E5
-  color: #6E6E6E
-  border: 0
-  padding: 0
-  text-align: center
+@import "toggle"
+@import "registration_form"
+@import "constants"
+@import "field_view"
 
 .title
   left: 93px
   padding-top: 120px
   /*font-family: Input Mono, monospace;
-  font-size: 48px
+  font-size: 36px
   font-weight: bold
   /*line-height: 58px;
   color: $color-primary
@@ -34,24 +24,18 @@ button
   width: 250px
   @include tall
   background: #0941BA
-  font-size: 36px
+  font-size: 27px
   color: #FFFFFF
-  margin: 25px 0
+  margin: 20px 0
   &:disabled
     background: rgba($color-primary, 0.3)
-
-.field-container
-  display: flex
-  flex-direction: column
-  align-items: center
-  margin: 15px 0
 
 .error
   display: flex
   align-items: center
   justify-content: center
   padding: 4px 0
-  font-size: 18px
+  font-size: 13px
   color: #CC3363
   width: $wide
   background: rgba(204, 51, 99, 0.1)
@@ -73,4 +57,4 @@ button
     margin-bottom: 0
   > .error
     height: $tall
-    font-size: 22px
+    font-size: 16px

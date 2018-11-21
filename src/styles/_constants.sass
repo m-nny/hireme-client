@@ -1,5 +1,20 @@
-$wide: 520px
-$tall: 60px
+$wide: 390px
+$tall: 45px
 $color-primary: #0941BA
 $color-secondary: #CC3363
 $color-disabled: #C4C4C4
+
+@mixin wide
+  width: $wide
+
+@mixin tall
+  height: $tall
+
+@mixin field
+  @include tall
+  background: #E5E5E5
+  color: #6E6E6E
+  border: 0
+  padding: 0
+  text-align: center
+

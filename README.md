@@ -2306,7 +2306,7 @@ npm install netlify-cli -g
 netlify deploy
 ```
 
-Choose `build` as the path to deploy.
+FillProfile `build` as the path to deploy.
 
 **To setup continuous delivery:**
 

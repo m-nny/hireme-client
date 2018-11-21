@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {signInUser} from '../ducks/auth';
 import {Field, reduxForm} from 'redux-form';
 import {validateLogin} from '../utils/validate';
-import FieldView from './common/FieldView';
+import {GrayField} from './common/FieldView';
 
-class LoginForm extends React.Component {
+class SignInForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.submit = this.submit.bind(this);
@@ -24,13 +24,13 @@ class LoginForm extends React.Component {
 				<Field
 					name="username"
 					type="text"
-					component={FieldView}
+					component={GrayField}
 					label="Username or Email"
 				/>
 				<Field
 					name="password"
 					type="password"
-					component={FieldView}
+					component={GrayField}
 					label="Password"
 				/>
 				<button type="submit" disabled={submitting}>Log in</button>
@@ -44,9 +44,9 @@ const mapDispatchToProps = {
 	signInUser
 };
 
-LoginForm = connect(null, mapDispatchToProps)(LoginForm);
-LoginForm = reduxForm({
+SignInForm = connect(null, mapDispatchToProps)(SignInForm);
+SignInForm = reduxForm({
 	form: 'login',
 	validate: validateLogin
-})(LoginForm);
-export default LoginForm;
+})(SignInForm);
+export default SignInForm;
