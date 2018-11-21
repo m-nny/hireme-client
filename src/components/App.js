@@ -6,7 +6,8 @@ import Feed from './FeedPage';
 import Welcome from './WelcomePage';
 import AboutPage from './AboutPage';
 import SignUpForm from './SignUpPage';
-import FillProfile from './Registeration/FillProfile';
+import Registration from './Registration';
+import StudentRegistration from './Registration/StudentRegistration';
 
 class App extends Component {
 	render() {
@@ -18,7 +19,8 @@ class App extends Component {
 					<Route path='/login' component={SignInForm}/>
 					<Route path='/register' component={SignUpForm}/>
 					<Route path='/about' component={AboutPage}/>
-					<Route path='/fill_profile' component={FillProfile}/>
+					<Route exact path='/registration' component={Registration}/>
+					<Route path='/registration/student' component={StudentRegistration}/>
 				</Switch>
 			</div>
 		);

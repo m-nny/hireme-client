@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Toggle extends React.Component {
 	handleChange(e) {
@@ -20,5 +21,12 @@ class Toggle extends React.Component {
 		);
 	}
 }
+
+Toggle.propTypes = {
+	left: PropTypes.string,
+	right: PropTypes.string,
+	value: PropTypes.bool,
+	onChange: PropTypes.func,
+};
 
 export default Toggle
