@@ -8,12 +8,12 @@ class Toggle extends React.Component {
 	}
 
 	render() {
-		let {left, right, value} = this.props;
+		let {left, right, value, input} = this.props;
 		return (
 			<div className="toggle">
 				<span>{left}</span>
 				<label className="switch">
-					<input onChange={this.handleChange.bind(this)} checked={value} type="checkbox"/>
+					<input {...input} onChange={this.handleChange.bind(this)} checked={value} type="checkbox"/>
 					<span className="slider"/>
 				</label>
 				<span>{right}</span>
