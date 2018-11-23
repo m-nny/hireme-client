@@ -6,7 +6,7 @@ import PostCard from './common/PostCard';
 import {createPost, getFeed} from '../ducks/post';
 import {validatePost} from '../utils/validate';
 import '../styles/_feedpage.sass'
-import Header from './Header';
+import Header from './common/Header';
 
 class FeedPage extends React.Component {
 	constructor(props) {

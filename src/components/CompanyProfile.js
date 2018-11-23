@@ -1,7 +1,7 @@
 import React from 'react';
 import {Column, Row} from 'simple-flexbox';
 
-import Header from './Header';
+import Header from './common/Header';
 import '../styles/_companyprofile.sass'
 
 
