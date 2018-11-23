@@ -1,5 +1,5 @@
 import React from 'react';
-
+import DropdownList from 'react-widgets/lib/DropdownList'
 import {Field, reduxForm} from "redux-form";
 import {WhiteField} from "./common/FieldView";
 
@@ -35,7 +35,7 @@ class CreateOffer extends React.Component {
 }
 
 CreateOffer = reduxForm({
-    form: 'CreateOffer',
+    form: 'create_offer',
 })(CreateOffer);
 
 export default CreateOffer;

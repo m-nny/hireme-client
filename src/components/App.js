@@ -12,6 +12,7 @@ import StudentRegistration from './Registration/StudentRegistration';
 import CompanyRegistration from './Registration/CompanyRegistration';
 import CreateOffer from './CreateOffer';
 import SignOutPage from './SignOutPage';
+import CompanyProfile from "./CompanyProfile";
 
 class App extends Component {
 	render() {
@@ -20,6 +21,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path='/' component={Welcome}/>
 					<Route path='/feed' component={Feed}/>
+                    <Route path='/company' component={CompanyProfile}/>
 					<Route path='/login' component={SignInForm}/>
 					<Route path='/register' component={SignUpForm}/>
 					<Route path='/about' component={AboutPage}/>
