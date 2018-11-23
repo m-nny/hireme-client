@@ -5,6 +5,8 @@ import {unauthenticated as signOutUser} from '../ducks/auth';
 import {getFeed} from '../ducks/post';
 import PostCard from './common/PostCard';
 
+import Image from './common/Image'
+
 class FeedPage extends React.Component {
 	constructor(props) {
 		super(props);
@@ -16,6 +18,7 @@ class FeedPage extends React.Component {
 			<div>
 				This is some fake news <br/>
 				<button onClick={() => this.props.signOutUser()}>Sign out</button> <br/>
+				<Image/>
 				{posts.map(post => <PostCard post={post} key={post.id}/>)}
 			</div>
 		);
