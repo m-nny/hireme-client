@@ -13,6 +13,7 @@ class WelcomePage extends React.Component {
 	}
 
 	render() {
+		console.log('AUTHETICATED', this.props.authenticated);
 		if (this.props.authenticated) {
 			this.props.history.push('/feed');
 		}
@@ -32,7 +33,7 @@ class WelcomePage extends React.Component {
 	}
 }
 
-function mapStateToProps({auth: authenticated}) {
+function mapStateToProps({auth: {authenticated}}) {
 	return {
 		authenticated
 	}

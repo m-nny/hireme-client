@@ -31,7 +31,7 @@ class UserProfile extends React.Component {
 					</Row>
 					<Row>
 						<Column className="col">
-							<img src="https://theblueraft.files.wordpress.com/2010/08/aang.jpg" alt=""/>
+							<img src={details.avatar_url} alt=""/>
 						</Column>
 						<Column className="col">
 							<div>Full Name:</div>
