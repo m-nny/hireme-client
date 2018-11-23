@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux';
-
-import {signInUser, signUpUser} from '../ducks/auth';
 import {Field, reduxForm} from 'redux-form';
+
 import {GrayField} from './common/FieldView';
 import {validateRegister} from '../utils/validate';
+import history from '../utils/history';
+import {signInUser, signUpUser} from '../ducks/auth';
 
 class RegisterForm extends React.Component {
 	constructor(props) {
@@ -15,6 +16,7 @@ class RegisterForm extends React.Component {
 	submit(values) {
 		return this.props.signUpUser(values)
 			.then(() => this.props.signInUser(values))
+			.then(() => history.push('/registration'))
 	}
 
 	render() {

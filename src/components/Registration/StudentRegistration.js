@@ -15,7 +15,7 @@ const skills = [
 
 const NewGradForm = () => (
 	<>
-		<div className="currentWork">
+		<div className="block">
 			<label className="pinky">Current work</label>
 			<Field name="employment.company" type="text" component={WhiteField} label="Current employer"/>
 			<Field name="employment.role" type="text" component={WhiteField} label="Current Role"/>
