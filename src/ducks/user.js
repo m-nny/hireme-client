@@ -78,11 +78,11 @@ export function getUserInfo() {
 }
 
 export function getUserProfile(username) {
-	username = username.trim() || "";
-	if (username === "")
-		return;
+	username = (username || '').trim();
 	console.log(`${URL}/api/users/${username}`);
 	return (dispatch) => {
+		if (username === '')
+			return;
 		dispatch({type: LOADING});
 		return axios.get(`${URL}/api/users/${username}`)
 			.then(res => {

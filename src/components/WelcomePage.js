@@ -8,7 +8,7 @@ const description = '/*The place where enthusiastic students meet innovative IT 
 class WelcomePage extends React.Component {
 	constructor(props) {
 		super(props);
-		this.onClickHandler = this.onClickHandler.bind(this)
+		this.onClickHandler = this.onClickHandler.bind(this);
 	}
 
 	render() {

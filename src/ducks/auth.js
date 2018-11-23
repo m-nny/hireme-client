@@ -48,7 +48,7 @@ export function signInUser({username, email, password}) {
 				console.log('Error:', message);
 				dispatch({type: SIGN_IN_USER_FAIL, payload: message});
 				throw new SubmissionError({
-					_error: "Incorrect username or password"
+					_error: 'Incorrect username or password'
 				});
 			});
 	};
@@ -68,9 +68,9 @@ export function authenticated(token) {
 	localStorage.setItem('user', token);
 	axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 	// history.push('/feed');
-	return (dispatch) => dispatch(getUserInfo()).then(payload => {
-		dispatch({type: SIGN_IN_USER_SUCCESS, payload});
-	});
+	return (dispatch) => dispatch(getUserInfo()).then(payload =>
+		dispatch({type: SIGN_IN_USER_SUCCESS, payload})
+	);
 }
 
 export function signUpUser({fullname, username, email, password}) {
@@ -90,7 +90,7 @@ export function signUpUser({fullname, username, email, password}) {
 			}).catch(error => {
 				dispatch({type: SIGN_UP_USER_FAIL, payload: error});
 				throw new SubmissionError({
-					_error: error.response.data.message || "Some server error"
+					_error: error.response.data.message || 'Some server error'
 				});
 			});
 	};

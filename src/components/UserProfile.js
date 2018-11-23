@@ -3,9 +3,16 @@ import {Column, Row} from 'simple-flexbox';
 
 import Header from './Header';
 import '../styles/_userprofile.sass'
+import {connect} from 'react-redux';
+import {getUserProfile} from '../ducks/user';
 
 
 class UserProfile extends React.Component {
+	constructor(props) {
+		super(props);
+		props.getUserProfile(props.username);
+	}
+
 	render() {
 		return (
 			<>
@@ -93,5 +100,16 @@ class UserProfile extends React.Component {
 	}
 }
 
+function mapStateToProps({user: {username}}) {
+	return {
+		username
+	};
+}
+
+const mapDispatchToProps = {
+	getUserProfile
+};
+
+UserProfile = connect(mapStateToProps, mapDispatchToProps)(UserProfile);
 
 export default UserProfile;

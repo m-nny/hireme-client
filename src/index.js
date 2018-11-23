@@ -11,20 +11,25 @@ import {authenticated} from './ducks/auth';
 
 const store = configureStore();
 
-const user = localStorage.getItem("user");
+const user = localStorage.getItem('user');
+const waitlist = [];
 if (user) {
-	store.dispatch(authenticated(user));
-	console.log("User already authorized");
+	waitlist.push(store.dispatch(authenticated(user)).then(() =>
+		history.push('/feed')
+	));
+	console.log('User already authorized');
 }
 
-ReactDOM.render((
-		<Provider store={store}>
-			<Router history={history}>
-				<App/>
-			</Router>
-		</Provider>
-	),
-	document.getElementById('root'));
+Promise.all(waitlist).then(() =>
+	ReactDOM.render((
+			<Provider store={store}>
+				<Router history={history}>
+					<App/>
+				</Router>
+			</Provider>
+		),
+		document.getElementById('root'))
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
