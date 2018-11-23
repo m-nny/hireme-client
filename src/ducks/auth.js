@@ -41,6 +41,7 @@ export function signInUser({username, email, password}) {
 		return axios.post(`${URL}/api/auth/signin`, {usernameOrEmail, password})
 			.then(res => {
 				dispatch(authenticated(res.data.accessToken));
+				history.push('/feed');
 				return Promise.resolve();
 			}).catch(error => {
 				let {message} = error.response.data;
@@ -66,7 +67,7 @@ export function unauthenticated() {
 export function authenticated(token) {
 	localStorage.setItem('user', token);
 	axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-	history.push('/feed');
+	// history.push('/feed');
 	return (dispatch) => dispatch(getUserInfo()).then(payload => {
 		dispatch({type: SIGN_IN_USER_SUCCESS, payload});
 	});

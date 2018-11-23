@@ -12,8 +12,10 @@ import {authenticated} from './ducks/auth';
 const store = configureStore();
 
 const user = localStorage.getItem("user");
-if (user)
+if (user) {
 	store.dispatch(authenticated(user));
+	console.log("User already authorized");
+}
 
 ReactDOM.render((
 		<Provider store={store}>

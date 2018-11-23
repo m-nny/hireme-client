@@ -11,7 +11,6 @@ class CompanyRegistration extends React.Component {
 
 	render() {
 		let {submitting, handleSubmit} = this.props;
-		// console.log(this.props);
 		return (
 			<form className="registration-container" onSubmit={handleSubmit(this.submit)}>
 				<label>Company Info</label>
@@ -19,7 +18,7 @@ class CompanyRegistration extends React.Component {
 					<label>Personal Info</label>
 					<Field name="name" type="text" component={WhiteField} label="Company Name*"/>
 					<Field name="location" type="text" component={WhiteField} label="Location*"/>
-					<Field name="Specialization" type="text" component={WhiteField} label="Company Specialization*"/>
+					<Field name="specialization" type="text" component={WhiteField} label="Company Specialization*"/>
 					<Field name="employees" type="text" component={WhiteField} label="Number of employees*"/>
 					<Field name="experience" type="text" component={WhiteField} label="Years of experience*"/>
 					<Field name="hidden" component={Toggle} left="Display Profile" right="Hide Profile"/>
