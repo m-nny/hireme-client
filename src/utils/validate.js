@@ -14,7 +14,7 @@ function validateLogin(values) {
 function validateRegister(values) {
 	const errors = {};
 	if (!values.fullname || values.fullname.length === 0) {
-		errors.fullname = "Required"
+		errors.fullname = 'Required'
 	}
 	if (!values.username) {
 		errors.username = 'Required'
@@ -27,17 +27,26 @@ function validateRegister(values) {
 		errors.password = 'Must be at least 6 characters long'
 	}
 	if (!values.email || values.email.length === 0) {
-		errors.email = "Required"
-	} else if (!values.email.endsWith("@nu.edu.kz")) {
-		errors.email = "Use NU email"
+		errors.email = 'Required'
+	} else if (!values.email.endsWith('@nu.edu.kz')) {
+		errors.email = 'Use NU email'
 	}
 	if (!values.agreement) {
-		errors.agreement = "You must accept terms of conditions"
+		errors.agreement = 'You must accept terms of conditions'
 	}
 	return errors
 }
 
+function validatePost(values) {
+	const errors = {};
+	if (!values.text || values.text.length === 0) {
+		errors._error = 'Cannot be empty';
+	}
+	return errors;
+}
+
 export {
 	validateLogin,
-	validateRegister
+	validateRegister,
+	validatePost,
 };

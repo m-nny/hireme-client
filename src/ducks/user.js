@@ -20,7 +20,7 @@ export default function reducer(state = initState, action) {
 				loading: false,
 				id: action.payload.id,
 				username: action.payload.username,
-				fullname: action.payload.fullname
+				fullname: action.payload.fullname,
 			};
 
 		case GET_USER_DETAILS_SUCCESS:

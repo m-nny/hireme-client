@@ -49,4 +49,5 @@ SignInForm = reduxForm({
 	form: 'login',
 	validate: validateLogin
 })(SignInForm);
+
 export default SignInForm;

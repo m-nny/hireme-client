@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {BACKEND_BASE_URL as URL} from '../utils/constants';
+import {SubmissionError} from 'redux-form';
 
 export const GET_FEED_SUCCESS = 'hireme-client/post/GET_FEED_SUCCESS';
 
@@ -67,9 +68,19 @@ export function createPost(post) {
 		dispatch({type: POSTING});
 		return axios.post(`${URL}/api/post`, post)
 			.then(res => {
-				let {data} = res;
-				console.log('DATA:', data);
-				dispatch({type: POST_POST_SUCCESS});
+				if (res.data.success) {
+					dispatch({type: POST_POST_SUCCESS});
+					return Promise.resolve();
+				} else {
+					dispatch({type: POSTING_FAILED, payload: res.data.message});
+					throw new SubmissionError({_error: res.data.message});
+				}
+			})
+			.catch(error => {
+				console.log(error);
+				let {message} = error.message;
+				dispatch({type: POSTING_FAILED, payload: message});
+				throw new SubmissionError({_error: message});
 			})
 	}
 }
