@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import SignInForm from './SignInPage';
-
+import UserProfile from './UserProfile'
 import Feed from './FeedPage';
 import Welcome from './WelcomePage';
 import AboutPage from './AboutPage';
@@ -28,6 +28,7 @@ class App extends Component {
 					<Route path='/registration/company' component={CompanyRegistration}/>
 					<Route path='/create_offer' component={CreateOffer}/>
 					<Route path='/sign_out' component={SignOutPage}/>
+					<Route path='/profile' component={UserProfile}/>
 				</Switch>
 			</div>
 		);

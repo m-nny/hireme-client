@@ -15,7 +15,8 @@
     "redux": "^4.0.0",
     "redux-axios-middleware": "^4.0.0",
     "redux-form": "^7.4.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "simple-flexbox": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
