@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import SignInForm from './SignInPage';
-
+import UserProfile from "./UserProfile"
 import Feed from './FeedPage';
 import Welcome from './WelcomePage';
 import AboutPage from './AboutPage';
@@ -21,7 +21,8 @@ class App extends Component {
 
 				<Switch>
 					<Route exact path='/' component={Welcome}/>
-					<Route path='/Feed' component={Feed}/>
+					<Route path='/feed' component={Feed}/>
+                    <Route path='/profile' component={UserProfile}/>
 					<Route path='/login' component={SignInForm}/>
 					<Route path='/register' component={SignUpForm}/>
 					<Route path='/about' component={AboutPage}/>
