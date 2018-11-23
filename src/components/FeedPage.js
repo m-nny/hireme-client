@@ -22,12 +22,11 @@ class FeedPage extends React.Component {
 				<div className="NewPost">
 					<form className="post_container">
 						<input name="UserPost" type="text" component={WhiteField} placeholder="Share your news with followers"/>
-                        <table>
-							<tr>
-								<td><button onClick={() => this.props.signOutUser()}>Post</button> <br/></td>
-								<td><button onClick={() => this.props.signOutUser()}>Attach Photo</button> <br/></td>
-                            </tr>
-						</table>
+                        <div className="buttons">
+								<button >Attach Photo</button>
+								<button >Post</button>
+
+                        </div>
 					</form>
 
 					{posts.map(post => <PostCard post={post} key={post.id}/>)}
