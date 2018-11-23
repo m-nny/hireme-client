@@ -1,11 +1,12 @@
 import React from 'react';
-import '../styles/_feedpage.sass'
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
-import {createPost, getFeed} from '../ducks/post';
 
 import PostCard from './common/PostCard';
+import {createPost, getFeed} from '../ducks/post';
 import {validatePost} from '../utils/validate';
+import '../styles/_feedpage.sass'
+import Header from './Header';
 
 class FeedPage extends React.Component {
 	constructor(props) {
@@ -31,10 +32,10 @@ class FeedPage extends React.Component {
 		let {posts, handleSubmit, error, posting, anyTouched} = this.props;
 		return (
 			<div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-				{/*<Header/>*/}
+				<Header/>
 				<div className="NewPost">
 					<form className="post_container" onSubmit={handleSubmit(this.submit)}>
-						<Field name="text" type="text" placeholder="Share your news with followers" component="input"/>
+						<Field name="text" type="text" placeholder="Share your news with followers" component="textarea"/>
 						<div className="buttons">
 							<button disabled>Attach Photo</button>
 							<button type="submit" disabled={posting}>Post</button>

@@ -40,7 +40,7 @@ function validateRegister(values) {
 function validatePost(values) {
 	const errors = {};
 	if (!values.text || values.text.length === 0) {
-		errors._error = 'Cannot be empty';
+		errors._error = 'Text cannot be empty';
 	}
 	return errors;
 }
