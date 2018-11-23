@@ -12,7 +12,8 @@ import StudentRegistration from './Registration/StudentRegistration';
 import CompanyRegistration from './Registration/CompanyRegistration';
 import CreateOffer from './CreateOffer';
 import SignOutPage from './SignOutPage';
-import CompanyProfile from "./CompanyProfile";
+import CompanyProfile from './CompanyProfile';
+import AdminPage from './AdminPage';
 
 class App extends Component {
 	render() {
@@ -21,7 +22,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path='/' component={Welcome}/>
 					<Route path='/feed' component={Feed}/>
-                    <Route path='/company' component={CompanyProfile}/>
+					<Route path='/company' component={CompanyProfile}/>
 					<Route path='/login' component={SignInForm}/>
 					<Route path='/register' component={SignUpForm}/>
 					<Route path='/about' component={AboutPage}/>
@@ -31,6 +32,7 @@ class App extends Component {
 					<Route path='/create_offer' component={CreateOffer}/>
 					<Route path='/sign_out' component={SignOutPage}/>
 					<Route path='/profile' component={UserProfile}/>
+					<Route path='/admin' component={AdminPage}/>
 				</Switch>
 			</div>
 		);
