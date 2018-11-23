@@ -6,25 +6,92 @@
   align-items: center
   margin: 55px 0
   > label:first-child
+    font-weight: bold
+
+  //  //@include tall
+  //button
+  //  @include wide
+  a
     background: $color-primary
     color: #FFFFFF
     text-align: center
     vertical-align: middle
-    padding: 12px
-    @include wide
-    //@include tall
-  button
-    @include wide
+    padding: 15px
+    margin: 10px
+    padding-right: 148px
+    padding-left: 148px
+    text-decoration: none
+
+    
 
 .block
-  border: #000000 1px solid
-  margin: 25px 0
+  border: #000000 2px solid
+  margin: 50px 0
   display: flex
   flex-direction: column
   align-items: center
-  padding: 24px 54px
+  padding: 24px 100px
+  min-width: 1000px
+  > label:first-child
+    margin-bottom: 30px
+
+    //align-self: center
+
+.userInfo
+  border: #000000 2px solid
+  margin: 50px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 24px 185px
   min-width: 700px
   > label:first-child
     margin-bottom: 30px
-    //align-self: center
+//align-self: center
+
+.currentWork
+  border: #000000 2px solid
+  margin: 50px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 24px 200px
+  min-width: 700px
+  > label:first-child
+    margin-bottom: 30px
+
+//align-self: center
+
+.pinky
+  color: $color-secondary
+  margin: 30px 0 15px
+  font-weight: bold
+
+.button
+  margin: 20px
+  background: $color-primary
+  color: #FFFFFF
+  text-align: center
+  vertical-align: middle
+  padding: 10px 20px
+  @include wide
+
+.managerInfo
+  border: #000000 2px solid
+  margin: 50px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 24px 159px 50px
+  min-width: 700px
+
+.whoami
+  display: flex
+  flex-direction: column
+  padding: 50px
+  color: $color-secondary
+  font-size: 125%
+  padding-right: 5%
+
+
 
