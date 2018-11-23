@@ -15,14 +15,14 @@ const skills = [
 
 const NewGradForm = () => (
 	<>
-		<div className="block">
-			<label>Current work</label>
+		<div className="currentWork">
+			<label className="pinky">Current work</label>
 			<Field name="employment.company" type="text" component={WhiteField} label="Current employer"/>
 			<Field name="employment.role" type="text" component={WhiteField} label="Current Role"/>
 			<Field name="employment.reference.name" type="text" component={WhiteField} label="Reference name"/>
 			<Field name="employment.reference.number" type="text" component={WhiteField} label="Reference number"/>
 			<Field name="employment.start_date" type="text" component={WhiteField} label="Start date"/>
-			<label>Display current work?</label>
+			<label className="pinky">Display current work?</label>
 			<Field name="employment.hidden" component={Toggle} left="Display" right="Hide"/>
 		</div>
 	</>
@@ -50,11 +50,11 @@ class StudentRegistration extends React.Component {
 		// console.log(this.props);
 		return (
 			<form className="registration-container" onSubmit={handleSubmit(this.submit)}>
-				<label>Profile Info</label>
+				<label className="button">Profile Info</label>
 				<Toggle left="Student" right="New Grad" onChange={this.handleChange} value={isNewgrad}/>
 				{/*Common for both*/}
 				<div className="block">
-					<label>Personal Info</label>
+					<label className="pinky">Personal Info</label>
 					<Field name="location" type="text" component={WhiteField} label="Location*"/>
 					<Field name="education.university" type="text" component={WhiteField} label="University/School*"/>
 					<Field name="education.degree" type="text" component={WhiteField} label="Degree*"/>
@@ -64,21 +64,21 @@ class StudentRegistration extends React.Component {
 				</div>
 
 				<div className="block">
-					<label>Your skills matter more than experience!</label>
+					<label className="pinky">Your skills matter more than experience!</label>
 					<Field name="strong_skill.name" type="text" component={WhiteField} label="Define your strongest skill"/>
 					<Field name="strong_skill.desc" type="text" component={WhiteField} label="Why do you think so? (140 words)"/>
 
-					<label>Do you have any proof of your strongest skill?</label>
+					<label className="pinky">Do you have any proof of your strongest skill?</label>
 					<Field name="urls.github" type="text" component={WhiteField} label="GitHub URL"/>
 					<Field name="urls.linked_in" type="text" component={WhiteField} label="LinkedIn URL"/>
 					<Field name="urls.web" type="text" component={WhiteField} label="Web URL"/>
 
-					<label>Define other skills</label>
+					<label className="pinky">Define other skills</label>
 					<SkillsetView skills={skills}/>
 				</div>
 				{isNewgrad && <NewGradForm/>}
 
-				<button type="submit" disabled={submitting}>Submit</button>
+				<button className="button" type="submit" disabled={submitting}>Submit</button>
 			</form>
 		);
 	}

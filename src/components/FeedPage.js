@@ -1,9 +1,13 @@
 import React from 'react';
+import "../styles/_feedpage.sass"
 import {connect} from 'react-redux';
-
 import {unauthenticated as signOutUser} from '../ducks/auth';
 import {getFeed} from '../ducks/post';
 import PostCard from './common/PostCard';
+import Header from "./Header";
+import {BrowserRouter as Router} from "react-router-dom";
+import {WhiteField} from "./common/FieldView";
+import {Field, reduxForm} from "redux-form";
 
 class FeedPage extends React.Component {
 	constructor(props) {
@@ -14,10 +18,21 @@ class FeedPage extends React.Component {
 		let {posts} = this.props;
 		return (
 			<div>
-				This is some fake news <br/>
-				<button onClick={() => this.props.signOutUser()}>Sign out</button> <br/>
-				{posts.map(post => <PostCard post={post} key={post.id}/>)}
-			</div>
+				<Router><Header/></Router>
+				<div className="NewPost">
+					<form className="post_container">
+						<input name="UserPost" type="text" component={WhiteField} placeholder="Share your news with followers"/>
+                        <table>
+							<tr>
+								<td><button onClick={() => this.props.signOutUser()}>Post</button> <br/></td>
+								<td><button onClick={() => this.props.signOutUser()}>Attach Photo</button> <br/></td>
+                            </tr>
+						</table>
+					</form>
+
+					{posts.map(post => <PostCard post={post} key={post.id}/>)}
+				</div>
+            </div>
 		);
 	}
 }
@@ -32,5 +47,9 @@ const mapDispatchToProps = {
 	getFeed,
 	signOutUser
 };
+
+FeedPage = reduxForm({
+	form: 'NewPost',
+}) (FeedPage);
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);
