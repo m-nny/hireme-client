@@ -4,16 +4,24 @@ import {Column, Row} from 'simple-flexbox';
 import Header from './Header';
 import '../styles/_userprofile.sass'
 import {connect} from 'react-redux';
-import {getUserProfile} from '../ducks/user';
+import {getUserInfo, getUserProfile} from '../ducks/user';
 
 
 class UserProfile extends React.Component {
 	constructor(props) {
 		super(props);
-		props.getUserProfile(props.username);
+		props.getUserInfo().then(({username}) => props.getUserProfile(username));
 	}
 
 	render() {
+		let {details, loading} = this.props;
+		console.log('DETAILS', details, loading);
+		if (!details.education || loading)
+			return (<>
+				<Header/>
+				<div> Loading...</div>
+			</>);
+		let {education, strong_skill, urls} = details;
 		return (
 			<>
 				<Header/>
@@ -32,19 +40,17 @@ class UserProfile extends React.Component {
 							<div>University:</div>
 							<div>Major:</div>
 							<div>Degree:</div>
-							<div>Graduation month&year:</div>
+							<div>Graduation date:</div>
 						</Column>
 						<Column>
-							<div>Assem Yeskabyl</div>
-							<div>username</div>
-							<div>city</div>
-							<div>Nazarbayev University</div>
-							<div>Computer Science</div>
-							<div>Bachelor</div>
-							<div>06 / 2020</div>
+							<div>{details.fullname}</div>
+							<div>{details.username}</div>
+							<div>{details.location}</div>
+							<div>{education && education.university}</div>
+							<div>{education && education.major}</div>
+							<div>{education && education.degree}</div>
+							<div>{education && education.graduation}</div>
 						</Column>
-
-						{/*</div>*/}
 					</Row>
 				</Column>
 				<Column flexGrow={1} className="skills">
@@ -61,15 +67,14 @@ class UserProfile extends React.Component {
 							<div>Web URL:</div>
 						</Column>
 						<Column className="col2">
-							<div>Assem Yeskabyl</div>
-							<div>username</div>
-							<div>city</div>
-							<div>Nazarbayev University</div>
-							<div>Computer Science</div>
-							<div>Bachelor</div>
+							<div>{strong_skill && strong_skill.name}</div>
+							<div>{strong_skill && strong_skill.description}</div>
+							<div>{details.skills && details.skills.replace(/\|/g, ' ')}</div>
+							<div>{urls.github}</div>
+							<div>{urls.linked_in}</div>
+							<div>{urls.web}</div>
 						</Column>
 
-						{/*</div>*/}
 					</Row>
 				</Column>
 				<Column flexGrow={1} className="currentwork">
@@ -90,24 +95,22 @@ class UserProfile extends React.Component {
 							<div>+7700400000</div>
 						</Column>
 
-						{/*</div>*/}
 					</Row>
 				</Column>
-
-
 			</>
 		);
 	}
 }
 
-function mapStateToProps({user: {username}}) {
+function mapStateToProps({user: {username, details, loading}}) {
 	return {
-		username
+		username, details, loading
 	};
 }
 
 const mapDispatchToProps = {
-	getUserProfile
+	getUserProfile,
+	getUserInfo,
 };
 
 UserProfile = connect(mapStateToProps, mapDispatchToProps)(UserProfile);

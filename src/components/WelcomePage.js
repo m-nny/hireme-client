@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 
 import '../styles/WelcomePage.sass';
+import {connect} from 'react-redux';
 
 const description = '/*The place where enthusiastic students meet innovative IT projects and help to solve real-life problems*/';
 
@@ -12,6 +13,9 @@ class WelcomePage extends React.Component {
 	}
 
 	render() {
+		if (this.props.authenticated) {
+			this.props.history.push('/feed');
+		}
 		return (
 			<div id="welcome">
 				<div className="title">HireMe.kz</div>
@@ -27,5 +31,13 @@ class WelcomePage extends React.Component {
 		console.log(`goto: ${name}`);
 	}
 }
+
+function mapStateToProps({auth: authenticated}) {
+	return {
+		authenticated
+	}
+}
+
+WelcomePage = connect(mapStateToProps)(WelcomePage);
 
 export default withRouter(WelcomePage);

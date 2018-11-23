@@ -57,12 +57,10 @@ export function getUserInfo() {
 		return axios.get(`${URL}/api/user/me`)
 			.then(res => {
 				let {id, username, fullname} = res.data;
-				console.log("DATA:", res.data);
+				console.log('DATA:', res.data);
 				dispatch({
 					type: GET_USER_SUCCESS,
-					payload: {
-						id, username, fullname
-					}
+					payload: {id, username, fullname}
 				});
 				return Promise.resolve({id, username, fullname});
 			}).catch(error => {
@@ -87,7 +85,7 @@ export function getUserProfile(username) {
 		return axios.get(`${URL}/api/users/${username}`)
 			.then(res => {
 				let details = res.data;
-				console.log("DATA details:", details);
+				console.log('DATA details:', details);
 				dispatch({
 					type: GET_USER_DETAILS_SUCCESS,
 					payload: details
@@ -108,10 +106,10 @@ export function getUserProfile(username) {
 export function setUserProfile(details) {
 	return (dispatch) => {
 		dispatch({type: LOADING});
-		console.log("---->", details);
+		console.log('---->', details);
 		return axios.post(`${URL}/api/user/me`, details)
 			.then(res => {
-				console.log("RES:", res.data);
+				console.log('RES:', res.data);
 				if (res.data.success) {
 					return dispatch({type: SET_USER_DETAILS_SUCCESS});
 				} else {
