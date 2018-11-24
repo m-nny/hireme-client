@@ -9,7 +9,7 @@ class Header extends React.Component {
 			return null;
 		}
 		return (
-			<div className="header row">
+			<div className="row header">
 				<label className="logo"><Link to="/feed">HireMe.kz</Link> </label>
 				<div>
 					<Link to="/feed">News</Link>

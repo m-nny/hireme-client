@@ -7,7 +7,7 @@ class CompanyProfile extends React.Component {
 	render() {
 		return (
 			<>
-				<Column flexGrow={1} className="profile">
+				<Column flexGrow={1} className="personal-info">
 					<Row horizontal="center">
 						<h1 className="pink">Company Info</h1>
 					</Row>

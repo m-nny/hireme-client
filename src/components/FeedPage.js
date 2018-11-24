@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import JobCard from './common/JobCard';
-import EventCard from './common/EventCard';
+import PostCard from './common/PostCard';
 import {createPost, getFeed} from '../ducks/post';
 import {validatePost} from '../utils/validate';
 import '../styles/_feedpage.sass'
@@ -42,7 +42,7 @@ class FeedPage extends React.Component {
 					{anyTouched && error && <div className="error"> {error} </div>}
 				</form>
 				{posts.map(post => post.jobOffers.length > 0 && <JobCard job={post.jobOffers[0]} key={post.id}/>)}
-				{posts.map(post => <EventCard post={post} key={post.id}/>)}
+				{posts.map(post => <PostCard post={post} key={post.id}/>)}
 			</div>
 		);
 
