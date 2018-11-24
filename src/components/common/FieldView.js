@@ -1,13 +1,13 @@
 import React from 'react';
 
 const GrayField = ({
-	                     id,
-	                     input,
-	                     label,
-	                     type,
-	                     meta: {touched, error, warning}
+	                   id,
+	                   input,
+	                   label,
+	                   type,
+	                   meta: {touched, error, warning}
 
-                     }) => (
+                   }) => (
 	<div className='field-container'>
 		<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '0px'}}>
 			<input {...input} placeholder={label} type={type} id={id}/>
@@ -20,8 +20,8 @@ const GrayField = ({
 );
 
 const WhiteField = ({
-	id, input, label, type, placeholder
-}) => (
+	                    id, input, label, type, placeholder
+                    }) => (
 	<div className="white-field">
 		<label htmlFor={id}>{label}</label>
 		<input {...input} placeholder={placeholder} type={type} id={id}/>

@@ -5,7 +5,7 @@ import {Field} from 'redux-form';
 const SkillView = ({
 	                   id, input, label, type, placeholder
                    }) => (
-	<div className={"skill" + (!input.value ? " disabled" : "")}>
+	<div className={'skill' + (!input.value ? ' disabled' : '')}>
 		<label htmlFor={id}>{label}</label>
 		<input {...input} placeholder={placeholder} type="checkbox" id={id}/>
 	</div>

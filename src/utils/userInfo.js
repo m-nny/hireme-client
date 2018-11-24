@@ -16,8 +16,8 @@ export function mapDetailsToState(details) {
 		job_field,
 		skills
 	} = details;
-	console.log("=>", details);
-	skills = (skills || "").split("|");
+	console.log('=>', details);
+	skills = (skills || '').split('|');
 	return {
 		fullname,
 		location,
@@ -53,8 +53,8 @@ export function mapStateToDetails(state) {
 		job_field,
 		skills
 	} = state;
-	console.log("<=", state);
-	skills = skills.join("|");
+	console.log('<=', state);
+	skills = skills.join('|');
 	return {
 		fullname,
 		location,

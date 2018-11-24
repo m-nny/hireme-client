@@ -5,7 +5,9 @@ import {Column, Row} from 'simple-flexbox';
 const JobCard = ({job: {company, position, responsibilities, qualifications, location}}) => (
 	<div className='job-card'>
 		<Column>
-			<Row horizontal="center"><div className='company-name'>{company.name}</div></Row>
+			<Row horizontal="center">
+				<div className='company-name'>{company.name}</div>
+			</Row>
 			<Row horizontal="center">
 				<Column className="Description">
 					<div>Position:</div>

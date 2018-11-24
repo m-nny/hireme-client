@@ -13,7 +13,7 @@ class CompanyRegistration extends React.Component {
 		let {submitting, handleSubmit} = this.props;
 		return (
 			<form className="registration-container" onSubmit={handleSubmit(this.submit)}>
-				<label className= "button">Company Info</label>
+				<label className="button">Company Info</label>
 				<div className="block">
 					<label className="pinky">General Info</label>
 					<Field name="name" type="text" component={WhiteField} label="Company Name*"/>
