@@ -1,6 +1,6 @@
 import React from 'react';
-import {WhiteField} from '../common/FieldView';
 import {Field, reduxForm} from 'redux-form';
+import {WhiteField} from '../common/FieldView';
 import Toggle from '../common/Toggle';
 
 

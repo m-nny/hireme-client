@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux';
-
-import {signInUser} from '../ducks/auth';
 import {Field, reduxForm} from 'redux-form';
+import {signInUser} from '../ducks/auth';
 import {validateLogin} from '../utils/validate';
 import {GrayField} from './common/FieldView';
 

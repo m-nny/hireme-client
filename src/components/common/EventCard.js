@@ -8,7 +8,7 @@ const Author = ({author: {avatar, name}}) => (
 	</div>
 );
 
-const PostCard = ({post: {id, company, author, text, photo_link}}) => (
+const EventCard = ({post: {id, company, author, text, photo_link}}) => (
 	<div className="post-card">
 		<Author author={author}/>
 		<div className="post-content">{text}</div>
@@ -16,4 +16,4 @@ const PostCard = ({post: {id, company, author, text, photo_link}}) => (
 	</div>
 );
 
-export default PostCard;
+export default EventCard;

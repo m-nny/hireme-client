@@ -1,7 +1,5 @@
 import React from 'react';
 import {Column, Row} from 'simple-flexbox';
-
-import Header from './common/Header';
 import '../styles/_companyprofile.sass'
 
 
@@ -9,7 +7,6 @@ class CompanyProfile extends React.Component {
 	render() {
 		return (
 			<>
-				<Header/>
 				<Column flexGrow={1} className="profile">
 					<Row horizontal="center">
 						<h1 className="pink">Company Info</h1>

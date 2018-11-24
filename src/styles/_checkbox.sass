@@ -1,4 +1,4 @@
-$checkbox-width: 30px
+$checkbox-width: 26px
 
 .regular-checkbox
   -webkit-appearance: none
@@ -19,14 +19,14 @@ $checkbox-width: 30px
 
 .regular-checkbox:checked:after
   content: '\25CF'
-  font-size: 16px
+  font-size: $checkbox-width
   position: absolute
-  left: 7px
-  top: 2px
+  left: $checkbox-width / 4 - 3
+  top: -2px
   color: #99a1a7
 
 input[type="checkbox"] + label
-  font-size: 15px
+  font-size: 14px
 
 input[type="checkbox"]
   @extend .regular-checkbox

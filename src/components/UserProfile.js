@@ -1,10 +1,8 @@
 import React from 'react';
 import {Column, Row} from 'simple-flexbox';
-
-import Header from './common/Header';
-import '../styles/_userprofile.sass'
 import {connect} from 'react-redux';
 import {getUserInfo, getUserProfile} from '../ducks/user';
+import '../styles/_userprofile.sass'
 
 
 class UserProfile extends React.Component {
@@ -17,14 +15,12 @@ class UserProfile extends React.Component {
 		let {details, loading} = this.props;
 		console.log('DETAILS', details, loading);
 		if (!details.education || loading)
-			return (<>
-				<Header/>
+			return (
 				<div> Loading...</div>
-			</>);
+			);
 		let {education, strong_skill, urls} = details;
 		return (
 			<>
-				<Header/>
 				<Column flexGrow={1} className="profile">
 					<Row horizontal="center">
 						<h1 className="pink">Personal Info</h1>
@@ -34,22 +30,34 @@ class UserProfile extends React.Component {
 							<img src={details.avatar_url} alt=""/>
 						</Column>
 						<Column className="col">
-							<div>Full Name:</div>
-							<div>Username:</div>
-							<div>Location:</div>
-							<div>University:</div>
-							<div>Major:</div>
-							<div>Degree:</div>
-							<div>Graduation date:</div>
-						</Column>
-						<Column>
-							<div>{details.fullname}</div>
-							<div>{details.username}</div>
-							<div>{details.location}</div>
-							<div>{education && education.university}</div>
-							<div>{education && education.major}</div>
-							<div>{education && education.degree}</div>
-							<div>{education && education.graduation}</div>
+							<Row>
+								<div>Full Name:</div>
+								<div>{details.fullname}</div>
+							</Row>
+							<Row>
+								<div>Username:</div>
+								<div>{details.username}</div>
+							</Row>
+							<Row>
+								<div>Location:</div>
+								<div>{details.location}</div>
+							</Row>
+							<Row>
+								<div>University:</div>
+								<div>{education && education.university}</div>
+							</Row>
+							<Row>
+								<div>Major:</div>
+								<div>{education && education.major}</div>
+							</Row>
+							<Row>
+								<div>Degree:</div>
+								<div>{education && education.degree}</div>
+							</Row>
+							<Row>
+								<div>Graduation date:</div>
+								<div>{education && education.graduation}</div>
+							</Row>
 						</Column>
 					</Row>
 				</Column>

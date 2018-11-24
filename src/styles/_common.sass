@@ -1,18 +1,17 @@
 @import "constants"
 @import "checkbox"
 @import "toggle"
-@import "registration_form"
+//@import "registration_form"
 @import "field_view"
 @import "form"
 @import "skillset"
 
 button
-  width: 250px
   @include tall
   background: #0941BA
-  font-size: 27px
   color: #FFFFFF
   margin: 20px 0
+  min-width: $wide / 2
   &:disabled
     background: rgba($color-primary, 0.3)
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../styles/JobCard.sass';
 import {Column, Row} from 'simple-flexbox';
+import '../../styles/JobCard.sass';
 
 const JobCard = ({job: {company, position, responsibilities, qualifications, location}}) => (
 	<div className='job-card'>

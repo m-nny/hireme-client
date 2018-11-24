@@ -2,11 +2,8 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {WhiteField} from './common/FieldView';
 
-
 class CreateOffer extends React.Component {
-
 	render() {
-
 		return (
 			<form className="registration-container">
 				<label className="button">Job Offer</label>

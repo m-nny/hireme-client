@@ -14,11 +14,13 @@ import CreateOffer from './CreateOffer';
 import SignOutPage from './SignOutPage';
 import CompanyProfile from './CompanyProfile';
 import AdminPage from './AdminPage';
+import Header from './common/Header';
 
 class App extends Component {
 	render() {
 		return (
 			<div className='App'>
+				<Header/>
 				<Switch>
 					<Route exact path='/' component={Welcome}/>
 					<Route path='/feed' component={Feed}/>
