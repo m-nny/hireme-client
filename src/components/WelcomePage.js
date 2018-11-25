@@ -1,8 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-
-import '../styles/WelcomePage.sass';
 import {connect} from 'react-redux';
+import '../styles/WelcomePage.sass';
 
 const description = '/*The place where enthusiastic students meet innovative IT projects and help to solve real-life problems*/';
 

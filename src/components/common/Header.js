@@ -1,12 +1,16 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import '../../styles/_header.sass'
 
 class Header extends React.Component {
 	render() {
+		let {history} = this.props;
+		if (['/', '/login', '/register'].includes(history.location.pathname)) {
+			return null;
+		}
 		return (
-			<div className="header row">
-				<label className="logo">HireMe.kz</label>
+			<div className="row header">
+				<label className="logo"><Link to="/feed">HireMe.kz</Link> </label>
 				<div>
 					<Link to="/feed">News</Link>
 					<Link to="/profile">My Profile</Link>
@@ -18,5 +22,7 @@ class Header extends React.Component {
 		)
 	}
 }
+
+Header = withRouter(Header);
 
 export default Header;

@@ -1,8 +1,7 @@
 import axios from 'axios';
+import {SubmissionError} from 'redux-form';
 import {BACKEND_BASE_URL as URL} from '../utils/constants';
 import history from '../utils/history';
-import {getUserInfo} from './user';
-import {SubmissionError} from 'redux-form';
 
 export const SIGN_UP_USER_SUCCESS = 'hireme-client/auth/SIGN_UP_SUCCESS';
 export const SIGN_UP_USER_FAIL = 'hireme-client/auth/SIGN_UP_FAIL';
@@ -68,9 +67,7 @@ export function authenticated(token) {
 	localStorage.setItem('user', token);
 	axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 	// history.push('/feed');
-	return (dispatch) => dispatch(getUserInfo()).then(payload =>
-		dispatch({type: SIGN_IN_USER_SUCCESS, payload})
-	);
+	return (dispatch) => dispatch({type: SIGN_IN_USER_SUCCESS});
 }
 
 export function signUpUser({fullname, username, email, password}) {

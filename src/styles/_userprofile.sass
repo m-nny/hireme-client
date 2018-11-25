@@ -1,41 +1,24 @@
 @mixin profile-block
-  display: block
-  font-size-adjust: inherit
-  font-size: 1rem
   width: 75%
-  align-content: center
   padding: 30px 5%
   margin: 20px 0
-  div
-    font-size: 20px
-
-.col
   img
     border: 1px solid black
-    width: 200px
-    height: 200px
-    margin-right: 50px
+    width: 150px
+    height: 150px
+  img + .column
+    margin-left: 20px
 
-.profile
+.personal-info
   background-color: #e9ecee
   @include profile-block
 
+
 .skills
-  color: #000000
   background-color: #90e3ff
   @include profile-block
 
-.currentwork
+.current-work
   color: #FFFFFF
   background-color: #0941BA
   @include profile-block
-//margin-bottom: 50px
-
-//.col1
-//  margin-right: 50px
-//
-//.col2
-//  margin-left: 50px
-//
-//.col3
-  margin-right: 50px

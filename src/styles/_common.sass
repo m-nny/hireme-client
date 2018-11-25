@@ -1,18 +1,16 @@
 @import "constants"
 @import "checkbox"
 @import "toggle"
-@import "registration_form"
 @import "field_view"
 @import "form"
 @import "skillset"
 
 button
-  width: 250px
   @include tall
   background: #0941BA
-  font-size: 27px
   color: #FFFFFF
   margin: 20px 0
+  min-width: $wide / 2
   &:disabled
     background: rgba($color-primary, 0.3)
 
@@ -20,6 +18,21 @@ button
   display: flex
   flex-direction: row
   align-items: center
+  width: 100%
+
+.column
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.field-specs
+  @extend .column
+  .row
+    > div
+      width: 50%
+      font-size: 16px
+    align-items: flex-start
+    margin: 4px 0
 
 .to-left
   float: left

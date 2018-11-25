@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/PostCard.sass';
+import '../../styles/_postcard.sass';
 
 const Author = ({author: {avatar, name}}) => (
 	<div className="author row">
@@ -9,7 +9,7 @@ const Author = ({author: {avatar, name}}) => (
 );
 
 const PostCard = ({post: {id, company, author, text, photo_link}}) => (
-	<div className="post-card">
+	<div className="post-card column">
 		<Author author={author}/>
 		<div className="post-content">{text}</div>
 		{photo_link && <img className="post-photo" src={photo_link} alt=""/>}
