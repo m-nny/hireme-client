@@ -41,8 +41,9 @@ class FeedPage extends React.Component {
 					</div>
 					{anyTouched && error && <div className="error"> {error} </div>}
 				</form>
-				{posts.map(post => post.jobOffers.length > 0 && <JobCard job={post.jobOffers[0]} key={post.id}/>)}
-				{posts.map(post => <PostCard post={post} key={post.id}/>)}
+				{posts.map(post => post.jobOffers.length > 0
+					? <JobCard job={post.jobOffers[0]} key={post.id}/>
+				: <PostCard post={post} key={post.id}/>)}
 			</div>
 		);
 
