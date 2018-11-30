@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import '../../styles/_registration_form.sass';
 
 const RegistrationRoot = () => (
 	<div className="registration-container">

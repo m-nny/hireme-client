@@ -1,8 +1,12 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
 import {WhiteField} from '../common/FieldView';
 import Toggle from '../common/Toggle';
 import SkillsetView from '../common/SkillSet';
+import {normalize} from '../../utils/userInfo';
+import history from '../../utils/history';
+import {getUserInfo, setUserProfile} from '../../ducks/user';
 
 const skills = [
 	'C/C++',
@@ -33,6 +37,8 @@ class StudentRegistration extends React.Component {
 		super(props);
 		this.state = {isNewgrad: false};
 		this.handleChange = this.handleChange.bind(this);
+		this.submit = this.submit.bind(this);
+		this.props.getUserInfo()
 	}
 
 	handleChange({target}) {
@@ -41,13 +47,16 @@ class StudentRegistration extends React.Component {
 	}
 
 	submit(values) {
-		console.log(values);
+		let {username, setUserProfile} = this.props;
+		let details = normalize({...values, username});
+		console.log(details);
+		setUserProfile(details)
+			.then(() => history.push('/feed'));
 	}
 
 	render() {
 		let {isNewgrad} = this.state;
-		let {submitting, handleSubmit} = this.props;
-		// console.log(this.props);
+		let {submitting, handleSubmit, username} = this.props;
 		return (
 			<form className="registration-container" onSubmit={handleSubmit(this.submit)}>
 				<label className="button">Profile Info</label>
@@ -66,7 +75,8 @@ class StudentRegistration extends React.Component {
 				<div className="block">
 					<label className="pinky">Your skills matter more than experience!</label>
 					<Field name="strong_skill.name" type="text" component={WhiteField} label="Define your strongest skill"/>
-					<Field name="strong_skill.desc" type="text" component={WhiteField} label="Why do you think so? (140 words)"/>
+					<Field name="strong_skill.description" type="text" component={WhiteField}
+					       label="Why do you think so? (140 words)"/>
 
 					<label className="pinky">Do you have any proof of your strongest skill?</label>
 					<Field name="urls.github" type="text" component={WhiteField} label="GitHub URL"/>
@@ -78,11 +88,22 @@ class StudentRegistration extends React.Component {
 				</div>
 				{isNewgrad && <NewGradForm/>}
 
-				<button className="button" type="submit" disabled={submitting}>Submit</button>
+				<button className="button" type="submit" disabled={submitting || !username}>Submit</button>
 			</form>
 		);
 	}
 }
+
+function mapStateToProps({user: {username}}) {
+	return {username};
+}
+
+const mapDispatchToProps = {
+	setUserProfile,
+	getUserInfo,
+};
+
+StudentRegistration = connect(mapStateToProps, mapDispatchToProps)(StudentRegistration);
 
 StudentRegistration = reduxForm({
 	form: 'ProfileInfo',

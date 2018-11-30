@@ -29,8 +29,7 @@ class RegisterForm extends React.Component {
 				<Field type='text' component={GrayField} name='email' label='E-mail'/>
 				<Field type='password' component={GrayField} name='password' label='Password'/>
 				<Field type='checkbox' component={GrayField} name='agreement' id='agreement'
-				       label="I agree with the terms and conditions "
-				/>
+				       label="I agree with the terms and conditions "/>
 
 				<button disabled={submitting}>Sign up</button>
 				{error && <div className="error"> {error} </div>}
