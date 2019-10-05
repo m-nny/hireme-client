@@ -6,7 +6,7 @@ import Toggle from '../common/Toggle';
 import SkillsetView from '../common/SkillSet';
 import {normalize} from '../../utils/userInfo';
 import history from '../../utils/history';
-import {getUserInfo, setUserProfile} from '../../ducks/user';
+import {getUserInfo, getUserProfile, setUserProfile} from '../../ducks/user';
 
 const skills = [
 	'C/C++',
@@ -39,6 +39,7 @@ class StudentRegistration extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.submit = this.submit.bind(this);
 		this.props.getUserInfo()
+			.then(({username}) => this.props.getUserProfile(username))
 	}
 
 	handleChange({target}) {
@@ -56,7 +57,10 @@ class StudentRegistration extends React.Component {
 
 	render() {
 		let {isNewgrad} = this.state;
-		let {submitting, handleSubmit, username} = this.props;
+		let {submitting, handleSubmit, username, details, loading} = this.props;
+		console.log(this.props.initialValues);
+		if (loading)
+			return <div> Loading... </div>;
 		return (
 			<form className="registration-container" onSubmit={handleSubmit(this.submit)}>
 				<label className="button">Profile Info</label>
@@ -94,19 +98,21 @@ class StudentRegistration extends React.Component {
 	}
 }
 
-function mapStateToProps({user: {username}}) {
-	return {username};
+function mapStateToProps({user: {username, details, loading}}) {
+	return {username, details, loading, initialValues: details};
 }
 
 const mapDispatchToProps = {
 	setUserProfile,
 	getUserInfo,
+	getUserProfile,
 };
-
-StudentRegistration = connect(mapStateToProps, mapDispatchToProps)(StudentRegistration);
 
 StudentRegistration = reduxForm({
 	form: 'ProfileInfo',
+	enableReinitialize: true
 })(StudentRegistration);
+
+StudentRegistration = connect(mapStateToProps, mapDispatchToProps)(StudentRegistration);
 
 export default StudentRegistration;

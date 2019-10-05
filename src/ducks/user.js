@@ -10,7 +10,7 @@ export const SET_USER_DETAILS_SUCCESS = 'hireme-client/user/SET_USER_DETAILS_SUC
 export const LOADING = 'hireme-client/user/LOADING';
 export const LOADING_FAILED = 'hireme-client/user/LOADING_FAILED';
 
-const initState = {loading: false, error: '', username: null, details: {}};
+const initState = {loading: false, error: '', username: {}};
 
 export default function reducer(state = initState, action) {
 	switch (action.type) {
